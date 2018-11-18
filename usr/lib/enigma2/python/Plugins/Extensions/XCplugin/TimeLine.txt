@@ -1,0 +1,183 @@
+#################################################################
+# XCplugin Lululla Mod. E2 Plugin v. 4.0 01/07/2017 ->>http://lululla.altervista.org<<--
+# XCplugin Version config file .xml v. 4.0
+# Conversion File Type MPEG to Ts
+# Current Default Service Type: 4097
+# Config Movie Folder /media/hdd 
+# Config Folder file xml /etc/enigma2/xc
+# Skin Mods By: MMARK, Info http://e2skin.blogspot.it/
+# Re-coded from Lululla 
+# Which thanks CorvoBoys ~ Corvone.com ~ linuxsat-support.com
+# and all those who participated and others I forgot to mention.
+# *** Please report any bugs you find ***
+# For more plugin information, visit:  ->>lululla.altervista.org<<--
+#################################################################
+#"For more plugin information, visit: ->>lululla.altervista.org<<--\n"
+#"--> HOME: "
+#"TV"
+#"Reload Team list: reload channel list from Team set"
+#"\n"
+#"PVR/Filelist: Open MediaCenter - PlaylistFolder"
+#"\n"
+#"Button Blu /M3uLoader: Opens the download list. Opens the list of .m3u files downloaded during conversion.Configured in Config Menu"
+#"\n"
+#"Button Green /Team: go to Team Page List Server"
+#"\n"
+#"Button REC: Download/Record Select Channel to the Job"
+#"\n"
+#"Button Yellow/Create Bouquet List: This function converts the server list to a favorite bouquet channel list of the type configured in Config Menu (mpegts/m3u) with epg and logos."
+#"\n"
+#"Button Number 0: Save Team from local Config in to file save.xml" 
+#"\n"
+#"Help: This Informatons" 
+#"--> TEAM: select List Team and press Ok or set in config Local Server and start with Blue Button"
+#"Button Blue : start Team set in config or start last Team select"
+#"\n"
+#"Button Green  start select Team"
+#"\n"
+#"--> TEAM/MENU: "
+#"Set Your Folder"
+#"Set your Team in config menu or edit file xc_plugin.xml"
+#"Set Your Service Type:"
+#"You can use 4097 or 5002 by setting in Config Menu: 4097 for Mediaplayer and Gstreamer-dvbmediasynk - 5002 for Exteplayer3 using ffmpeg."
+#"Naturally, if you have installed Serviceapp in the enigma2 settings, when setting to use the original player."
+#"Set Yes for VNetSpeedInfo in Skin Player 
+#"Set Yes for LivePlayer with TS Live in skin Player 
+##################################################################
+# Notes: Skin oDreamy-FHD remove XCPLUGIN skin  in 
+#/usr/share/enigma2/oDreamy-FHD/module/skin_plugins.xml
+# for this skin and Egami Image
+# or put attached skin_plugins.xm from topic forum in
+# /usr/share/enigma2/oDreamy-FHD/module
+###########################TIMELINE#############################
+#File necessary = e2_plugin.xml in /etc/enigma2/xc
+#init mod. 10/02/2017
+#add config host-user-password 
+#add timeshift fix
+#add player m3u/ts
+#add converter m3u/mpegts/ts 
+#add open folder movie and download
+#add SwitchList
+#add automount xml
+#add automount movie
+#fix poster to return main
+#fix set cover
+#
+#4.1
+#fix update
+#fix screen
+#fix LoadM3U
+#fix exteplayer3
+##
+#4.2
+#fix PlayLoadM3U-Crash index0
+#back-to-video : DELETED
+#Exit on player vod
+#Epg on Player 
+#Cover on Player Vod and Epg/Info
+#Picon on channel List and Player
+#next-mount /media/net -nas :NotTested/Not Active
+##
+#4.3
+#add screen select server team
+#check for file server team
+#add save.xml for team in config
+#add player 2 for live
+#all new skin
+#crash on cvs 2.5 with VNetSpeedInfo active in skin
+##
+#4.4
+#minor fix
+#change server autoupdate
+#################################################################
+#total_info
+#exp_date
+#iptvstreams_list
+#user_info
+#cl_data
+#max_connections
+#BOUQUET_NAME
+#USERNAME
+#PASSWORD
+#SERVER_URL
+#OUTPUT_KEY
+#playlist_url
+#direct_source_url
+##4.5
+#get_live_streams
+#direct_source
+#stream_source
+#get_vod_streams 
+#################################################################
+#4.6
+#fix bugs
+#fix VNetSpeedInfo
+#fix skins
+#fix ConfigPassword
+#4.7
+#fix configUser
+#fix main + server
+#4.8
+#fix crash on load_m3u
+#fix return to list from epg
+#fix error xmlname = config.plugins.XCplugin.hostaddressvalue
+#add import /tmp/xc.txt from TEAM/MENU if active host config
+#add import /tmp/xc.txt from TEAM in file xc_(user).xml 
+#4.9
+#fix many bug 
+#5.0
+#add option top/bottom config
+#add cron timer autobouquet
+#5.1
+#change pos.Team to menu 
+#change import line
+#save data
+#5.2
+#add button remove bouquet (single list)
+#In Main change Button Team with Menu
+#In Menu added Button Team
+#Import from file xc.txt from Menu or Team if file xc.txt exist to /tmp
+#5.3
+#add imdb database movie
+#add tmdb database movie
+#add preview on loadm3u
+#5.4
+#small fix 
+#skin cover & version
+#5.5
+#add pin parental if active in enigma2
+#fix download/rec
+#5.6
+#other fix
+#time update fixed now
+#add TMDB v.8.3 database movie
+#5.7
+#start to config (main)
+#5.8
+#return start to main and major fix
+#5.9
+#other minor fix
+#6.0
+#change server
+#6.1
+#add preview channel in main
+#6.2
+#deleted
+#6.3
+#remove preview (no )
+#6.4
+#fix epg on player
+#################################################################
+# selected_channel[0]) chan_counter          
+# selected_channel[1]) name of selected item in menu
+# selected_channel[2]) epg data of selected item in menu
+# selected_channel[3]) url piconname 
+# selected_channel[4]) stream_url
+# selected_channel[5]) selected stream/category url - playlist_url
+# selected_channel[6]) category_id 
+# selected_channel[7]) img_src - url poster 
+# selected_channel[8]) description4playlist_html
+# selected_channel[9]) protected 
+# selected_channel[10]) ts_stream 
+#################################################################
+ 

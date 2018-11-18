@@ -1,0 +1,61 @@
+<!-- ***** XC IPTV PLAYER 1280x720 ***** 29/12/2017 /-->
+<screen name="xc_iptv_player" position="0,0" size="1280,720" backgroundColor="#FF000000" flags="wfNoBorder" title="Videoplayer">
+	<ePixmap position="0,530"  size="1280,190" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/infobar720.png" alphatest="blend" zPosition="-1" />
+	<ePixmap position="0,0"    size="1280,187" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/iptvbar.png"    alphatest="blend" zPosition="-1" />
+    <ePixmap position="30,640" size="84,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/xc.png"            alphatest="blend" zPosition="1" />
+	<!-- EPG -->
+	<widget name="programm" position="40,25" size="1200,140" font="Regular;20" foregroundColor="#ffffff" backgroundColor="#20000000" transparent="1" />    
+	<!-- Channel Name -->
+	<eLabel position="130,630" size="1110,30" backgroundColor="#202020" zPosition="-1" />
+	<eLabel position="235,630" size="5,30" backgroundColor="#000000" transparent="0" zPosition="5" />
+	<widget name="channel_name" position="245,630" size="850,30" font="Regular;22" valign="center" foregroundColor="#ffffff" backgroundColor="#20000000" transparent="1" zPosition="3" />
+	<widget source="session.CurrentService" render="Label" position="30,600" size="900,30" font="Regular;22" valign="center" noWrap="1" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="3">
+		<convert type="ServiceName">Name</convert>
+	</widget>
+	<eLabel position="1120,630" size="5,30" backgroundColor="#000000" transparent="0" zPosition="5" />
+	<widget source="global.CurrentTime" render="Label" position="1120,634" size="110,30" font="Regular;22" halign="right" foregroundColor="#808080" backgroundColor="#000000" transparent="1" zPosition="2">
+		<convert type="ClockToText">Format:%H:%M:%S</convert>
+	</widget>
+	<!-- Buttons -->
+    <!--
+	<eLabel position="245,683" size="15,15" backgroundColor="yellow" zPosition="3" />
+	<widget name="key_yellow" position="270,680" size="120,30" font="Regular;20" foregroundColor="#808080" backgroundColor="#000000" transparent="1" />
+	<eLabel position="350,683" size="15,15" backgroundColor="green" zPosition="3" />
+	<widget name="key_green" position="375,680" size="120,30" font="Regular;20" foregroundColor="#808080" backgroundColor="#000000" transparent="1" />
+ 	 -->
+    <!-- Panel VNetSpeedInfo -->
+    	<ePixmap position="515,670" size="53,30" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/speedlan.png" alphatest="blend" zPosition="2" />
+    	<widget source="session.CurrentService" render="Label" position="580,680" size="95,30" font="Regular;20" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="2" noWrap="1">
+    	    <convert type="VNetSpeedInfo">NET_TYP</convert>
+    	</widget>
+    	<widget source="session.CurrentService" render="Label" position="640,680" size="150,56" font="Regular;20" halign="left" foregroundColor="red" backgroundColor="#000000" transparent="1" zPosition="2" noWrap="1">
+    	    <convert type="VNetSpeedInfo">RC_MB</convert>
+    	</widget>  
+	<!-- Resolution -->
+    	<widget source="session.CurrentService" render="Label" zPosition="4" position="755,680" size="75,20" halign="right" font="Regular;19" foregroundColor="#ffffff" transparent="1" backgroundColor="#000000">
+		<convert type="ServiceInfo">VideoWidth</convert>
+	</widget>
+	<eLabel text="x" zPosition="4" position="839,680" size="15,20" halign="left" font="Regular;19" foregroundColor="#ffffff" transparent="1" backgroundColor="#000000" />
+	<widget source="session.CurrentService" render="Label" zPosition="4" position="855,680" size="55,20" halign="left" font="Regular;19" foregroundColor="#ffffff" transparent="1" backgroundColor="#000000">
+		<convert type="ServiceInfo">VideoHeight</convert>
+	</widget>
+    	<!-- Panel FrameRate Video FPS -->
+    	<widget source="session.CurrentService" render="Label" zPosition="4" position="930,680" size="80,30" font="Regular;19" foregroundColor="#606060" backgroundColor="#000000" transparent="1">
+    		<convert type="ServiceInfo">Framerate</convert>	
+    	</widget>
+	<!-- Audio icon (is there multichannel audio?) -->
+	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/ico_dolby_off.png" position="1140,668" size="100,35" zPosition="1" alphatest="blend" />
+	<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/ico_dolby_on.png" position="1140,668" size="100,35" zPosition="2" alphatest="blend">
+		<convert type="ServiceInfo">IsMultichannel</convert>
+		<convert type="ConditionalShowHide" />
+	</widget>
+	<!-- HD icon -->
+	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/ico_hd_off.png" position="1020,668" size="98,35" zPosition="1" alphatest="blend" />
+	<widget source="session.CurrentService" render="Pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/ico_hd_on.png" position="1020,668" size="98,35" zPosition="2" alphatest="blend">
+		<convert type="ServiceInfo">VideoWidth</convert>
+		<convert type="ValueRange">721,1980</convert>
+		<convert type="ConditionalShowHide" />
+	</widget>
+    
+   	<widget name="picon" position="30,640" size="130,80" backgroundColor="#41000000" zPosition="3" scale="1" />
+</screen>

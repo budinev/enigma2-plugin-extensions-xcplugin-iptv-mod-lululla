@@ -1,0 +1,51 @@
+<!-- ***** OpenServer 1280x720 ***** 29/12/2017 /-->
+<screen name="XC_OPENSERVER" position="0,0" size="1280,720" backgroundColor="#41000000" flags="wfNoBorder" title="Xtream-Team">
+	<ePixmap position="0,0" size="1280,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/fullpanel1080.png" alphatest="blend" zPosition="-1" />
+	<ePixmap position="0,0" size="1280,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/curve.png" alphatest="blend" zPosition="100" />
+	<ePixmap position="35,36" size="84,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/xc.png" alphatest="blend" scale="1" zPosition="10" />
+	<eLabel text="Xtream-Codes" position="120,45" size="250,50" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" zPosition="1" transparent="1" />
+
+	<widget name="version" position="40,99" size="150,50" font="Regular;20" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="10" />
+
+	<eLabel text="Please Select..." position="510,45" size="350,50" font="Regular;24" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<widget name="live" position="715,43" size="300,50" font="Regular;24" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#0000000" transparent="1" zPosition="1" />  
+    	<!-- Clock -->
+	<widget source="global.CurrentTime" render="Label" position="1000,35" size="250,60" font="Regular;22" halign="right" valign="center" foregroundColor="#808080" backgroundColor="#101010" transparent="1" zPosition="1">
+		<convert type="ClockToText">Format %A %d %B %H:%M:%S</convert>
+	</widget>  
+    	<!-- Poster -->
+	<ePixmap position="35,96" size="170,240" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/iptvlogo.jpg" alphatest="blend" scale="1" zPosition="5" />
+	<ePixmap position="35,96" size="180,248" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/grid.png" alphatest="blend" scale="1" zPosition="5" />
+    	<!-- Menu -->
+	<ePixmap position="225,100" size="26,26" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/key_info.png" zPosition="3" transparent="1" alphatest="blend" />
+	<!--<eLabel text="Menu" position="260,105" size="70,30" font="Regular;20" foregroundColor="#ffff00" backgroundColor="#101010" transparent="1" zPosition="1" />-->
+        <ePixmap position="255,100" size="26,26" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/key_help.png" zPosition="3" transparent="1" alphatest="blend" />
+<!--
+        <eLabel text="Help " position="260,95" size="70,40" font="Regular;20" foregroundColor="#ffff00" backgroundColor="#101010" transparent="1" zPosition="1" />
+-->
+    	<!-- List -->
+   	<widget name="list" position="550,140" size="650,500" itemHeight="40" font="Regular;20" enableWrapAround="1" scrollbarMode="showOnDemand" foregroundColor="#808080" foregroundColorSelected="#ffffff" backgroundColor="#0b2049" backgroundColorSelected="#0b2049" transparent="1" zPosition="1" />
+	
+    	<!-- info -->    
+   	<eLabel position="40,415" size="405,2" backgroundColor="#303030" zPosition="10" />	
+	<widget name="playlist" position="500,100" size="750,35" font="Regular;24" halign="center" valign="center" foregroundColor="#ffffff" backgroundColor="#303030" transparent="0" zPosition="1" />
+	<widget name="srvcsval" position="40,425" size="640,50" font="Regular;20" foregroundColor="#ffff00" transparent="2" zPosition="2" />
+	<widget name="LivePlayer" position="40,455" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
+	<widget name="VNetSpeedInfo" position="40,485" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
+	<widget name="ptchxzz" position="40,515" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
+	<widget name="ptchmovie" position="40,545" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
+	<widget name="typem3utv" position="40,575" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
+    
+    <eLabel position="40,620" size="435,2" backgroundColor="#303030" zPosition="10" />
+    <widget source="session.VideoPicture" render="Pig" position="224,143" size="225,137" backgroundColor="transparent" zPosition="3" />
+    
+    <!-- Buttons -->
+	<eLabel position="470,665" size="10,30" backgroundColor="blue" zPosition="1" />
+	<widget name="key_blu" position="265,665" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="right" />
+	<eLabel position="470,625" size="10,30" backgroundColor="#ffff00" zPosition="1" />
+	<widget name="key_yellow" position="265,625" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="right" />
+	<eLabel position="40,625" size="10,30" backgroundColor="red" zPosition="1" />
+	<widget name="key_red" position="60,625" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
+	<eLabel position="40,665" size="10,30" backgroundColor="green" zPosition="1" />
+	<widget name="key_green" position="60,665" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
+</screen>

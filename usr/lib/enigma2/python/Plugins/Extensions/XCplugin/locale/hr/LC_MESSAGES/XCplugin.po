@@ -1,0 +1,572 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: xc-plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-15 17:36+0100\n"
+"PO-Revision-Date: 2018-11-15 17:36+0100\n"
+"Last-Translator: \n"
+"Language-Team: @lululla\n"
+"Language: hr_BA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Loco-Source-Locale: de_DE\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Poedit-SearchPath-0: plugin.py\n"
+
+#: plugin.py:240
+msgid "Bottom"
+msgstr ""
+
+#: plugin.py:240
+msgid "Top"
+msgstr ""
+
+#: plugin.py:245
+msgid "M3U to TV"
+msgstr ""
+
+#: plugin.py:245
+msgid "MPEGTS to TV"
+msgstr ""
+
+#: plugin.py:255
+msgid "interval"
+msgstr ""
+
+#: plugin.py:255
+msgid "fixed time"
+msgstr ""
+
+#: plugin.py:325
+msgid "XtreamCode-Config"
+msgstr "XtreamCode konfiguracija"
+
+#: plugin.py:332
+msgid "User Files"
+msgstr "Korisničke datoteke"
+
+#: plugin.py:337 plugin.py:1097 plugin.py:2455 plugin.py:2628 plugin.py:2782
+#: plugin.py:2954 plugin.py:3127 plugin.py:3151
+#, python-format
+msgid " V. %s"
+msgstr " V. %s"
+
+#: plugin.py:346 plugin.py:1098 plugin.py:2457 plugin.py:2631 plugin.py:2783
+#: plugin.py:2955 plugin.py:3128 plugin.py:3153
+msgid "Close"
+msgstr "Zatvori"
+
+#: plugin.py:347
+msgid "Save"
+msgstr "Pohrani"
+
+#: plugin.py:348
+msgid "Update"
+msgstr "Nadogradnja"
+
+#: plugin.py:377
+#, python-format
+msgid "Last channel update: %s"
+msgstr ""
+
+#: plugin.py:392
+msgid "Link in Main Menu  "
+msgstr "Link u glavni izbornik"
+
+#: plugin.py:392
+msgid "Display XCplugin in Main Menu"
+msgstr "Prikaz XCplugina u glavnom izborniku"
+
+#: plugin.py:393
+msgid "Server URL"
+msgstr "Server URL"
+
+#: plugin.py:393
+msgid "Enter Url:Port without 'http://' your_domine:8000"
+msgstr "Unesite Url:Port bez \"http://\" your_domine: 8000"
+
+#: plugin.py:394
+msgid "Server Username"
+msgstr "Server korisnicko ime"
+
+#: plugin.py:394
+msgid "Enter Username"
+msgstr "Unesite korisničko ime"
+
+#: plugin.py:395
+msgid "Server Password"
+msgstr "Server zaporka"
+
+#: plugin.py:395
+msgid "Enter Password"
+msgstr "Upišite lozinku"
+
+#: plugin.py:397
+msgid "Automatic bouquet update (schedule):"
+msgstr "Automatsko ažuriranje buke (raspored):"
+
+#: plugin.py:397
+msgid "Active Automatic Bouquet Update"
+msgstr "Ažuriranje aktivnog automatskog ukrašavanja"
+
+#: plugin.py:400
+msgid "Schedule type:"
+msgstr ""
+
+#: plugin.py:400
+msgid "At an interval of hours or at a fixed time"
+msgstr "U intervalima od sati ili u određeno vrijeme"
+
+#: plugin.py:402
+msgid "Update interval (hours):"
+msgstr ""
+
+#: plugin.py:402
+msgid "Configure every interval of hours from now"
+msgstr "Konfigurirajte svaki interval sati od sada"
+
+#: plugin.py:404
+msgid "Time to start update:"
+msgstr ""
+
+#: plugin.py:404
+msgid "Configure at a fixed time"
+msgstr "Konfigurirajte u određeno vrijeme"
+
+#: plugin.py:406
+msgid "Services Type"
+msgstr "Servis tip"
+
+#: plugin.py:406
+msgid "Configure service Reference Gstreamer or Exteplayer3"
+msgstr "Konfigurirajte Gstreamer ili Exteplayer3 usluge"
+
+#: plugin.py:407
+msgid "LivePlayer Active "
+msgstr "LivePlayer aktivan"
+
+#: plugin.py:407
+msgid "Live Player for Stream .ts: set No for Record Live"
+msgstr "Live Player za streaming .ts: postavite ne za snimanje uživo"
+
+#: plugin.py:408
+msgid "NetSpeed in Player "
+msgstr "NetSpeed u Player "
+
+#: plugin.py:408
+msgid "Use NetSpeed test in Vod and Live Player"
+msgstr "Koristite NetSpeed test u Vod i Live Playeru"
+
+#: plugin.py:409
+msgid "Folder user file .xml"
+msgstr "Korisnička datoteka mape .xml"
+
+#: plugin.py:409
+msgid "Configure folder containing .xml files"
+msgstr "Konfigurirajte mapu koja sadrži .xml datoteke"
+
+#: plugin.py:410
+msgid "Media Folder"
+msgstr "Medijska mapa"
+
+#: plugin.py:410
+msgid "Configure folder containing movie files"
+msgstr "Konfigurirajte mapu s filmskim datotekama"
+
+#: plugin.py:411
+msgid "Conversion type Output "
+msgstr "Vrsta pretvorbe Output"
+
+#: plugin.py:411
+msgid "Configure type of stream to be downloaded by conversion"
+msgstr "Konfigurirajte vrstu streama koju želite preuzeti konverzijom"
+
+#: plugin.py:412
+msgid "Place IPTV bouquets at "
+msgstr "Postavite IPTV bukete na"
+
+#: plugin.py:412
+msgid "Configure to place the bouquets of the converted lists"
+msgstr "Konfigurirajte postavljanje buketa konvertiranih popisa"
+
+#: plugin.py:413
+msgid "Auto Update Plugin:"
+msgstr "Autmatska nadogradnja plugina"
+
+#: plugin.py:413
+msgid "Configure autoupdate plugin"
+msgstr "Konfiguriraj dodatak za automatsko ažuriranje"
+
+#: plugin.py:464
+msgid ""
+"New update available!!\n"
+"\n"
+" Do you want update plugin ?"
+msgstr ""
+"Nova nadogradnja dostupna!\n"
+" \n"
+"Zelite li plugin nadograditi?"
+
+#: plugin.py:466
+msgid ""
+"\n"
+"XcPlugin is Last version!"
+msgstr ""
+"\n"
+"XCplugin je zadnja inacica!"
+
+#: plugin.py:474 plugin.py:483
+msgid "Updates available!"
+msgstr "Nadogradnja dostupna!"
+
+#: plugin.py:487
+msgid "Install update..."
+msgstr "Instaliranje nadogradnje ..."
+
+#: plugin.py:494
+msgid "Restart Interface Please!"
+msgstr "Molimo, pokrenite ponovo GUI."
+
+#: plugin.py:496
+msgid "Execution finished.\n"
+msgstr "Izvedba zavrsena.\n"
+
+#: plugin.py:496
+msgid "Do you want to restart GUI ?"
+msgstr "Zelite li GUI ponovo pokrenuti ?"
+
+#: plugin.py:499
+msgid "Error while downloading files!"
+msgstr "Greska kod skidanja datoteke!"
+
+#: plugin.py:521
+msgid "/media/hdd NOT DETECTED!"
+msgstr "/media/hdd NOT DETECTED!"
+
+#: plugin.py:525
+msgid "/media/usb NOT DETECTED!"
+msgstr "/media/usb NOT DETECTED!"
+
+#: plugin.py:580
+msgid "Really close without saving settings?"
+msgstr "Zelite li zatvoriti bez pohrane ?"
+
+#: plugin.py:929
+msgid "Downloading ..."
+msgstr "Skidam ..."
+
+#: plugin.py:996
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Corrupted Download File:\n"
+"%s"
+msgstr ""
+"Greska u skidanju video sadrzaja!\n"
+"\n"
+"Greska skidanja u datoteci:\n"
+"%s"
+
+#: plugin.py:997
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Could not read RTMP-Packet:\n"
+"%s"
+msgstr ""
+"Greska u skidanju video sadrzaja!\n"
+"\n"
+"Paket RTMP nije moguce pokrenuti.\n"
+"%s"
+
+#: plugin.py:998
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Segmentation fault:\n"
+"%s"
+msgstr ""
+"Greska u skidanju video sadrzaja!\n"
+"\\ n\n"
+"Povratna informacija o greski:\n"
+"%s"
+
+#: plugin.py:999
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Server returned error:\n"
+"%s"
+msgstr ""
+"Greska u skidanju video sadrzaja!\n"
+"\n"
+"Povratna greska servera:\n"
+"%s"
+
+#: plugin.py:1000
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Unknown Error:\n"
+"%s"
+msgstr ""
+"Greska u skidanju video sadrzaja!\n"
+"\n"
+"Nepoznata greska:\n"
+"%s"
+
+#: plugin.py:1093
+msgid "Download"
+msgstr "Download"
+
+#: plugin.py:1099
+msgid "Add Bouquets"
+msgstr ""
+
+#: plugin.py:1100
+msgid "Remove Bouquet"
+msgstr ""
+
+#: plugin.py:1101
+msgid "Load M3U File"
+msgstr "Učitaj datoteku M3U"
+
+#: plugin.py:1164
+msgid "Exit Plugin?"
+msgstr "Izaci iz plugina ?"
+
+#: plugin.py:1208
+msgid ""
+"The MediaPlayer plugin is not installed!\n"
+"Please install it."
+msgstr ""
+"Mediaplayer plugin nije instaliran!\n"
+"Molimo, instalirajte ga."
+
+#: plugin.py:1309 plugin.py:2358 plugin.py:3560
+msgid "No valid list "
+msgstr "Lista nije valjana"
+
+#: plugin.py:1312
+msgid ""
+"Please enter correct parameters in Config\n"
+" no valid list "
+msgstr ""
+"Molimo, upisite tocne postavke u konfiguracijsku listu.\n"
+"Lista nije valjana."
+
+#: plugin.py:1348
+msgid ""
+"No Video to Download!!\n"
+"playlist_url != None"
+msgstr ""
+"Greska u skidanju video sadrzaja!\n"
+"playlist_url != None"
+
+#: plugin.py:1354
+#, python-format
+msgid ""
+"DOWNLOAD VIDEO?\n"
+"%s"
+msgstr ""
+"Skinuti video?\n"
+"%s"
+
+#: plugin.py:1356
+msgid "Live Player Active in Setting: set No for Record Live"
+msgstr "Live Player Aktivno u postavci: postavite Ne za snimanje uživo"
+
+#: plugin.py:1360
+msgid "No Video to Download\\Record!!"
+msgstr "Greska u skidanju/snimanju video sadrzaja!"
+
+#: plugin.py:1388
+msgid "[DOWNLOAD] "
+msgstr "[Skidanje] "
+
+#: plugin.py:1626
+msgid "Please enter the parental control pin code"
+msgstr "Unesite rodni kôd za nadzor roditelja"
+
+#: plugin.py:1626
+msgid "Enter pin code"
+msgstr "Unesite pin kôd"
+
+#: plugin.py:1634
+msgid "The pin code you entered is wrong."
+msgstr "PIN kôd koji ste unijeli pogrešan je."
+
+#: plugin.py:1709
+msgid "Combined Live/VOD"
+msgstr "Kombinirano Live/VOD"
+
+#: plugin.py:1710
+#, python-format
+msgid "Convert Playlist to: %s ?"
+msgstr "Pretvori popis pjesama na: %s?"
+
+#: plugin.py:1847 plugin.py:2767
+msgid "Reload list in progress..."
+msgstr "Aktualiziranje liste u napredku ...."
+
+#: plugin.py:1847 plugin.py:2767
+msgid "wait please..."
+msgstr "molimo pricekajte ..."
+
+#: plugin.py:1857
+msgid "Uninstall Team in progress..."
+msgstr "Uninstall Team in progress..."
+
+#: plugin.py:2190
+msgid "BLUE = START PLAY RECORDED VIDEO"
+msgstr "Plavo = Pokretanje snimanja"
+
+#: plugin.py:2456 plugin.py:2632 plugin.py:3155
+msgid "Remove"
+msgstr "Odbaci"
+
+#: plugin.py:2514
+msgid "Finished"
+msgstr "Zavrseno"
+
+#: plugin.py:2546
+#, python-format
+msgid "Do you want to remove %s ?"
+msgstr "Zelite li odbaciti %s ?"
+
+#: plugin.py:2627
+#, python-format
+msgid "Put .m3u Files in Folder %s"
+msgstr "Ubacite .m3u datoteku u mapu %s"
+
+#: plugin.py:2629
+msgid "OK: Preview"
+msgstr ""
+
+#: plugin.py:2633
+msgid "Make Bouquet"
+msgstr ""
+
+#: plugin.py:2692 plugin.py:3283
+#, python-format
+msgid "Do you want to remove: %s ?"
+msgstr "Da li želite da uklonite: %s ?"
+
+#: plugin.py:2713
+#, python-format
+msgid "Do you want to Convert %s to favorite .tv ?"
+msgstr "Zelite li %s u favorite .tv konvertirati?"
+
+#: plugin.py:2756
+msgid "Check on favorites lists..."
+msgstr "Provjerite listu favorita ..."
+
+#: plugin.py:2784
+msgid "Play"
+msgstr "Pokreni"
+
+#: plugin.py:2785
+msgid "OK"
+msgstr "OK"
+
+#: plugin.py:2785
+msgid "Preview"
+msgstr "Pregled"
+
+#: plugin.py:3154
+msgid "Rename"
+msgstr "Preimenuj"
+
+#: plugin.py:3156
+msgid "Import infos server"
+msgstr "Import infos server"
+
+#: plugin.py:3191
+#, python-format
+msgid "File saved to %s !"
+msgstr "Datoteka je sačuvana na %s !"
+
+#: plugin.py:3201
+msgid "File not found /tmp/xc.txt!"
+msgstr "File not found /tmp/xc.txt!"
+
+#: plugin.py:3320
+#, python-format
+msgid "XCplugin Console Rename: %s"
+msgstr "XCplugin Console preimenuj: %s"
+
+#: plugin.py:3889
+msgid ""
+"XCplugin\n"
+"\n"
+"Reload list in progress...\n"
+"\n"
+"wait please..."
+msgstr ""
+"XCplugin\n"
+"\n"
+"Ponovo učitaj listu ...\n"
+"\n"
+"sačekajte molim ..."
+
+#~ msgid "OK: Anteprima"
+#~ msgstr "OK: Pregled"
+
+#~ msgid "Create Bouquet"
+#~ msgstr "Stvorite Bouquet"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "Conversion type List %s"
+#~ msgstr "Lista konverzije %s"
+
+#~ msgid "Create Bouquets"
+#~ msgstr "Stvorite bukete"
+
+#~ msgid "Folder file xml %s"
+#~ msgstr "Folder datoteka xml %s"
+
+#~ msgid "Help"
+#~ msgstr "Pomoc"
+
+#~ msgid "Info"
+#~ msgstr "Informacije"
+
+#~ msgid "Info Epg"
+#~ msgstr "Informacije EPG"
+
+#~ msgid "LivePlayer Active %s"
+#~ msgstr "LivePlayer aktivan %s"
+
+#~ msgid "Movie Folder"
+#~ msgstr "Filmska mapa"
+
+#~ msgid "Movie Folder %s"
+#~ msgstr "Movie Folder %s"
+
+#~ msgid "Reload Playlists"
+#~ msgstr "Ponovno učitajte popise pjesama"
+
+#~ msgid "Remove Bouquets"
+#~ msgstr "Ukloni bukete"
+
+#~ msgid "Settings"
+#~ msgstr "Postavke"
+
+#~ msgid "Type Services %s"
+#~ msgstr "Tip servisa %s"
+
+#~ msgid "VNetSpeedInfo Active in Player %s"
+#~ msgstr "VNetSpeedInfo aktivan u Player %s"

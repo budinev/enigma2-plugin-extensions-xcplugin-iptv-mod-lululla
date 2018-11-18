@@ -1,0 +1,34 @@
+<!-- ***** TASK MENU 1280x720 ***** 29/12/2017 /-->
+<screen name="xc_StreamTasks" position="0,0" size="1280,720" title="Video Download List" backgroundColor="#FF000000" flags="wfNoBorder">
+	<ePixmap position="0,0" size="1280,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/fullpanel1080.png" alphatest="blend" zPosition="-1" />
+	<ePixmap position="35,36" size="84,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/xc.png" alphatest="blend" scale="1" zPosition="10" />
+	<eLabel text="Xtream-Codes" position="120,45" size="250,50" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" zPosition="1" transparent="1" />
+	<!-- Clock -->
+	<widget source="global.CurrentTime" render="Label" position="1000,35" size="250,60" font="Regular;22" halign="right" valign="center" foregroundColor="#808080" backgroundColor="#101010" transparent="1" zPosition="1">
+		<convert type="ClockToText">Format %A %d %B %H:%M:%S</convert>
+	</widget> 
+	<!-- Poster -->
+	<!--eLabel position="215,100" size="2,245" backgroundColor="#303030" zPosition="10" />
+	<eLabel position="40,343" size="175,2" backgroundColor="#303030" zPosition="10" /-->
+	<ePixmap position="35,96" size="180,248" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/grid.png" alphatest="blend" zPosition="5" />
+	<ePixmap position="35,96" size="170,240" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/iptvlogo.jpg" alphatest="blend" scale="1" zPosition="1" />
+	<ePixmap position="35,96" size="170,240" pixmap="/tmp/poster.jpg" scale="1" zPosition="2" />
+	<widget source="movielist" render="Listbox" position="250,110" size="990,570" zPosition="7" scrollbarMode="showOnDemand" transparent="1">
+		<convert type="TemplatedMultiContent">
+			{"template": [
+				MultiContentEntryText(pos = (5, 4), size = (665, 28), font=1, flags = RT_HALIGN_LEFT, text = 1), # index 1 is the name
+				MultiContentEntryText(pos = (680, 4), size = (100, 28), font=1, flags = RT_HALIGN_RIGHT, text = 2), # index 2 is the state
+				MultiContentEntryProgress(pos = (800, 4), size = (110, 22), percent = -3), # index 3 should be progress
+				MultiContentEntryText(pos = (915, 4), size = (60, 28), font=1, color=0x3faaff, flags = RT_HALIGN_RIGHT, text = 4), # index 4 is the percentage
+			],
+			"fonts": [gFont("Regular", 20),gFont("Regular", 20)],
+			"itemHeight": 30
+			}
+		</convert>
+	</widget>
+	<widget name="version" position="40,99" size="150,50" font="Regular;20" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="10" />
+	<eLabel position="40,625" size="10,30" backgroundColor="red" zPosition="1" />
+	<widget name="key_red" position="60,625" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
+	<eLabel position="40,665" size="10,30" backgroundColor="green" zPosition="1" />
+	<widget name="key_green" position="60,665" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
+</screen>

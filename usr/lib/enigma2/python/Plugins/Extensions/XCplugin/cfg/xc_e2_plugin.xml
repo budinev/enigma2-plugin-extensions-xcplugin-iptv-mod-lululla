@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<items>
+<plugin_version>1.0</plugin_version>                              
+
+<!--Use XcPlugin-Xml-Help Pc Software for compile this -->
+
+<xtream_e2portal_url><![CDATA[http://mypanel.dyndns.tv:8000/enigma2.php]]></xtream_e2portal_url>
+<username>XXXX</username>
+<password>XXXX</password>
+
+</items>

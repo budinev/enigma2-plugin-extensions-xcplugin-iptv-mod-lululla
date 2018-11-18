@@ -1,0 +1,34 @@
+<!-- ***** PLAYLIST FOLDER 1920x1080 ***** 29/12/2017 /-->
+<screen name="nStreamTasksScreen" position="0,0" size="1920,1080" title="Video Download List" backgroundColor="#FF000000" flags="wfNoBorder">
+	<ePixmap position="0,0" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/fhd/full1080.png" alphatest="blend" zPosition="-1" />
+	<ePixmap position="50,55" size="125,75" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/fhd/xc.png" alphatest="blend" zPosition="10" />
+	<eLabel text="PlayList" position="420,65" size="600,70" font="Regular;50" foregroundColor="yellow" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<!-- Clock -->
+	<widget source="global.CurrentTime" render="Label" position="1470,40" size="400,100" font="Regular;34" halign="right" valign="center" foregroundColor="#808080" backgroundColor="#101010" transparent="1" zPosition="1">
+		<convert type="ClockToText">Format %A %d %B %H:%M:%S</convert>
+	</widget>
+	<!-- Poster -->
+	<ePixmap position="50,160" size="299,440" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/fhd/iptvlogo.jpg" scale="1" zPosition="1" />
+	<ePixmap position="40,160" size="320,440" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/fhd/grid.png" alphatest="blend" zPosition="5" />
+	<!-- Movie List -->
+	<widget source="movielist" render="Listbox" position="420,150" size="1450,900" scrollbarMode="showOnDemand" transparent="1" zPosition="1">
+		<convert type="TemplatedMultiContent">
+			{"template": [
+				MultiContentEntryText(pos = (5, 5),        size = (900, 50), font=1, flags = RT_HALIGN_LEFT, text = 1), # index 1 is the name
+				MultiContentEntryText(pos = (920, 5),      size = (150, 40), font=1, flags = RT_HALIGN_RIGHT, text = 2), # index 2 is the state
+				MultiContentEntryProgress(pos = (1110, 5), size = (190, 40), percent = -3), # index 3 should be progress
+				MultiContentEntryText(pos = (1300, 5),     size = (120, 50), font=1, color=0x3faaff, flags = RT_HALIGN_RIGHT, text = 4), # index 4 is the percentage
+				],
+				"fonts": [gFont("Regular", 32),gFont("Regular", 32)],
+				"itemHeight": 50
+			}
+		</convert>
+	</widget>
+    
+  	<widget name="version" position="40,175" size="300,60" halign="left" font="Regular;30" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="10" />
+    
+	<eLabel position="50,1010" size="10,40" backgroundColor="green" zPosition="1" />
+	<widget name="key_green" position="70,1010" size="300,40" font="Regular;32" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<eLabel position="50,955" size="10,40" backgroundColor="red" zPosition="1" />
+	<widget name="key_red" position="70,955" size="300,40" font="Regular;32" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+</screen>

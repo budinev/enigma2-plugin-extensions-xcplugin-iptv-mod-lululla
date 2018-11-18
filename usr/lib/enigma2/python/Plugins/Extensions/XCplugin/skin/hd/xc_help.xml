@@ -1,0 +1,27 @@
+<!-- ***** XC HELP SCREEN 1280x720 ***** 29/12/2017 /-->
+<screen name="xcHelp" position="0,0" size="1280,720" title="HELP" backgroundColor="#FF000000" flags="wfNoBorder">
+	<ePixmap position="0,0" size="1280,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/fullpanel1080.png" alphatest="blend" zPosition="-1" />
+	<ePixmap position="0,0" size="1280,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/curve.png" alphatest="blend" zPosition="100" />
+	<ePixmap position="35,36" size="84,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/xc.png" alphatest="blend" scale="1" zPosition="10" />
+	<eLabel text="Xtream-Codes" position="120,45" size="250,50" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" zPosition="1" transparent="1" />
+	
+	<widget name="version" position="40,99" size="150,50" font="Regular;20" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="10" />
+<!--    
+    <widget name="version" position="320,49" size="150,50" font="Regular;24" halign="right" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="3" />
+-->
+	<eLabel text="HELP-CREDITS" position="510,45" size="400,50" font="Regular;26" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+    	<!-- Clock -->
+	<widget source="global.CurrentTime" render="Label" position="1000,35" size="250,60" font="Regular;22" halign="right" valign="center" foregroundColor="#808080" backgroundColor="#101010" transparent="1" zPosition="1">
+		<convert type="ClockToText">Format %A %d %B %H:%M:%S</convert>
+	</widget>  
+    	<!-- Poster -->
+	<ePixmap position="35,96" size="170,240" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/iptvlogo.jpg" alphatest="blend" scale="1" zPosition="5" />
+	<ePixmap position="35,96" size="180,248" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/grid.png" alphatest="blend" scale="1" zPosition="5" />
+	<widget name="infocredits" position="40,360" size="410,300" font="Regular;17" halign="center" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="1" />
+	<widget name="helpdesc" position="510,120" size="720,574" font="Regular;17" halign="center" foregroundColor="#b0b0b0" backgroundColor="#000000" transparent="1" zPosition="1" />
+	<eLabel position="40,670" size="10,30" backgroundColor="red" zPosition="1" />
+	<widget name="key_red" position="60,670" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
+	<ePixmap position="275,276" size="100,58" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/pp-donate.png" scale="1" zPosition="1" alphatest="blend" />
+	<eLabel text="lululla.altervista.org" position="219,238" size="350,30" font="Regular;22" foregroundColor="#ffff00" backgroundColor="#000000" zPosition="1" transparent="1" />
+<ePixmap position="280,115" size="90,90" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/miniinfo.png" zPosition="3" transparent="1" alphatest="blend" />
+</screen>

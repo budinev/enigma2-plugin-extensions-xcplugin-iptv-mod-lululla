@@ -1,0 +1,31 @@
+<!-- ***** XC EPG SCREEN 1280x720 ***** 29/12/2017 /-->
+<screen name="xc_Epg" position="0,0" size="1280,720" title="Epg" backgroundColor="#FF000000" flags="wfNoBorder">
+	<ePixmap position="0,0" size="1280,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/fullpanel1080.png" alphatest="blend" zPosition="-1" />
+	<ePixmap position="0,0" size="1280,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/curve.png" alphatest="blend" zPosition="100" />
+	<ePixmap position="35,36" size="84,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/xc.png" alphatest="blend" scale="1" zPosition="10" />
+	<eLabel text="Xtream-Codes" position="120,45" size="250,50" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" zPosition="1" transparent="1" />
+<!--    
+   
+	<widget name="version" position="320,49" size="150,50" font="Regular;24" halign="right" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="3" />
+-->
+    <widget source="session.VideoPicture" render="Pig" position="43,385" size="409,222" backgroundColor="transparent" zPosition="3" />
+
+	<eLabel text="Current Epg" position="510,45" size="250,50" font="Regular;26" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+    	<!-- Clock -->
+	<widget source="global.CurrentTime" render="Label" position="1000,35" size="250,60" font="Regular;22" halign="right" valign="center" foregroundColor="#808080" backgroundColor="#101010" transparent="1" zPosition="1">
+		<convert type="ClockToText">Format %A %d %B %H:%M:%S</convert>
+	</widget>  
+	
+    <eLabel position="40,375" size="405,2" backgroundColor="#303030" zPosition="10" />
+    <eLabel position="40,620" size="435,2" backgroundColor="#303030" zPosition="10" />
+
+    <!-- Poster -->
+	<ePixmap position="35,96" size="170,240" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/iptvlogo.jpg" alphatest="blend" scale="1" zPosition="3" />
+    <ePixmap position="35,96" size="170,240" pixmap="/tmp/poster.jpg" scale="1" alphatest="blend" zPosition="8" /> 
+	<ePixmap position="35,96" size="175,248" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/hd/grid.png" alphatest="blend" scale="1" zPosition="8" />
+    
+	<widget name="version" position="40,99" size="150,50" font="Regular;20" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="10" />    
+	<widget name="text_clear" position="550,110" size="700,570" font="Regular;18" halign="left" foregroundColor="#97bbff" backgroundColor="#000000" transparent="1" zPosition="1" />
+	<eLabel position="40,625" size="10,30" backgroundColor="red" zPosition="1" />
+	<widget name="key_red" position="60,625" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
+</screen>

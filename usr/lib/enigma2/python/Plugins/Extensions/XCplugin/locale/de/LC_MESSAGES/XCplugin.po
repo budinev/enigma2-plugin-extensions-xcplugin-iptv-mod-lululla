@@ -1,0 +1,572 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: xc-plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-15 17:37+0100\n"
+"PO-Revision-Date: 2018-11-15 17:37+0100\n"
+"Last-Translator: \n"
+"Language-Team: @lululla\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: plugin.py\n"
+
+#: plugin.py:240
+msgid "Bottom"
+msgstr ""
+
+#: plugin.py:240
+msgid "Top"
+msgstr ""
+
+#: plugin.py:245
+msgid "M3U to TV"
+msgstr ""
+
+#: plugin.py:245
+msgid "MPEGTS to TV"
+msgstr ""
+
+#: plugin.py:255
+msgid "interval"
+msgstr ""
+
+#: plugin.py:255
+msgid "fixed time"
+msgstr ""
+
+#: plugin.py:325
+msgid "XtreamCode-Config"
+msgstr "XtreamCode-Config"
+
+#: plugin.py:332
+msgid "User Files"
+msgstr "Benutzerdaten"
+
+#: plugin.py:337 plugin.py:1097 plugin.py:2455 plugin.py:2628 plugin.py:2782
+#: plugin.py:2954 plugin.py:3127 plugin.py:3151
+#, python-format
+msgid " V. %s"
+msgstr " V. %s"
+
+#: plugin.py:346 plugin.py:1098 plugin.py:2457 plugin.py:2631 plugin.py:2783
+#: plugin.py:2955 plugin.py:3128 plugin.py:3153
+msgid "Close"
+msgstr "schließen"
+
+#: plugin.py:347
+msgid "Save"
+msgstr "Speichern"
+
+#: plugin.py:348
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: plugin.py:377
+#, python-format
+msgid "Last channel update: %s"
+msgstr ""
+
+#: plugin.py:392
+msgid "Link in Main Menu  "
+msgstr "Links im Hauptmenü  "
+
+#: plugin.py:392
+msgid "Display XCplugin in Main Menu"
+msgstr "Zeigen Sie XCplugin im Hauptmenü an"
+
+#: plugin.py:393
+msgid "Server URL"
+msgstr "Server URL"
+
+#: plugin.py:393
+msgid "Enter Url:Port without 'http://' your_domine:8000"
+msgstr "Geben Sie URL ein: Port ohne 'http: //' your_dome: 8000"
+
+#: plugin.py:394
+msgid "Server Username"
+msgstr "Server Username"
+
+#: plugin.py:394
+msgid "Enter Username"
+msgstr "Benutzername eingeben"
+
+#: plugin.py:395
+msgid "Server Password"
+msgstr "Server Password"
+
+#: plugin.py:395
+msgid "Enter Password"
+msgstr "Passwort eingeben"
+
+#: plugin.py:397
+msgid "Automatic bouquet update (schedule):"
+msgstr "Automatisches Bouquet-Update (Zeitplan):"
+
+#: plugin.py:397
+msgid "Active Automatic Bouquet Update"
+msgstr "Aktives automatisches Bouquet-Update"
+
+#: plugin.py:400
+msgid "Schedule type:"
+msgstr ""
+
+#: plugin.py:400
+msgid "At an interval of hours or at a fixed time"
+msgstr "In einem Intervall von Stunden oder zu einer festen Zeit"
+
+#: plugin.py:402
+msgid "Update interval (hours):"
+msgstr ""
+
+#: plugin.py:402
+msgid "Configure every interval of hours from now"
+msgstr "Konfigurieren Sie ab jetzt jedes Intervall von Stunden"
+
+#: plugin.py:404
+msgid "Time to start update:"
+msgstr ""
+
+#: plugin.py:404
+msgid "Configure at a fixed time"
+msgstr "Zu einer festen Zeit konfigurieren"
+
+#: plugin.py:406
+msgid "Services Type"
+msgstr "Services Type"
+
+#: plugin.py:406
+msgid "Configure service Reference Gstreamer or Exteplayer3"
+msgstr "Konfigurieren Sie den Dienst Referenz Gstreamer oder Exteplayer3"
+
+#: plugin.py:407
+msgid "LivePlayer Active "
+msgstr "LivePlayer Aktiv "
+
+#: plugin.py:407
+msgid "Live Player for Stream .ts: set No for Record Live"
+msgstr "Live-Player für Stream .ts: Legen Sie No für Record Live fest"
+
+#: plugin.py:408
+msgid "NetSpeed in Player "
+msgstr "NetSpeed in Player "
+
+#: plugin.py:408
+msgid "Use NetSpeed test in Vod and Live Player"
+msgstr "Verwenden Sie den Net Speed Test in Vod und Live Player"
+
+#: plugin.py:409
+msgid "Folder user file .xml"
+msgstr "Ordner Benutzerdatei .xml"
+
+#: plugin.py:409
+msgid "Configure folder containing .xml files"
+msgstr "Konfigurieren Sie den Ordner mit den XML-Dateien"
+
+#: plugin.py:410
+msgid "Media Folder"
+msgstr "Medienordner"
+
+#: plugin.py:410
+msgid "Configure folder containing movie files"
+msgstr "Konfigurieren Sie den Ordner mit den Filmdateien"
+
+#: plugin.py:411
+msgid "Conversion type Output "
+msgstr "Konvertierungstyp Ausgabe"
+
+#: plugin.py:411
+msgid "Configure type of stream to be downloaded by conversion"
+msgstr ""
+"Konfigurieren Sie den Typ des Streams, der durch die Konvertierung "
+"heruntergeladen werden soll"
+
+#: plugin.py:412
+msgid "Place IPTV bouquets at "
+msgstr "Setzen Sie IPTV-Blumensträuße an"
+
+#: plugin.py:412
+msgid "Configure to place the bouquets of the converted lists"
+msgstr ""
+"Konfigurieren Sie, um die Bouquets der konvertierten Listen zu platzieren"
+
+#: plugin.py:413
+msgid "Auto Update Plugin:"
+msgstr "Auto-Update Plugins:"
+
+#: plugin.py:413
+msgid "Configure autoupdate plugin"
+msgstr "Konfigurieren Sie das Autoupdate-Plugin"
+
+#: plugin.py:464
+msgid ""
+"New update available!!\n"
+"\n"
+" Do you want update plugin ?"
+msgstr ""
+"Neues Update verfügbar!! \n"
+" \n"
+" Wollen Sie das Plugin aktualisieren?"
+
+#: plugin.py:466
+msgid ""
+"\n"
+"XcPlugin is Last version!"
+msgstr ""
+"\n"
+"XcPlugin ist aktuell!"
+
+#: plugin.py:474 plugin.py:483
+msgid "Updates available!"
+msgstr "Updates verfügbar!"
+
+#: plugin.py:487
+msgid "Install update..."
+msgstr "Installieren Sie das Update ..."
+
+#: plugin.py:494
+msgid "Restart Interface Please!"
+msgstr "Bitte starten Sie die GUI neu!"
+
+#: plugin.py:496
+msgid "Execution finished.\n"
+msgstr "Ausführung beendet.\n"
+
+#: plugin.py:496
+msgid "Do you want to restart GUI ?"
+msgstr "Wollen Sie die GUI neu zu starten ?"
+
+#: plugin.py:499
+msgid "Error while downloading files!"
+msgstr "Fehler beim Herunterladen von Dateien!"
+
+#: plugin.py:521
+msgid "/media/hdd NOT DETECTED!"
+msgstr "/media/hdd NOT DETECTED!"
+
+#: plugin.py:525
+msgid "/media/usb NOT DETECTED!"
+msgstr "/media/usb NOT DETECTED!"
+
+#: plugin.py:580
+msgid "Really close without saving settings?"
+msgstr "Schließen ohne speichern?"
+
+#: plugin.py:929
+msgid "Downloading ..."
+msgstr "Herunterladen ..."
+
+#: plugin.py:996
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Corrupted Download File:\n"
+"%s"
+msgstr ""
+"Download Video nicht erfolgreich!\n"
+"\n"
+"Fehlerhaftes Datei-Downloads:\n"
+"%s"
+
+#: plugin.py:997
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Could not read RTMP-Packet:\n"
+"%s"
+msgstr ""
+"Download Video nicht erfolgreich!\n"
+"\n"
+"Paket RTMP: konnte nicht gelesen werden:\n"
+"%s"
+
+#: plugin.py:998
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Segmentation fault:\n"
+"%s"
+msgstr ""
+"Download Video nicht erfolgreich!\n"
+"\\ n\n"
+"Segmentierung fehlerhaft:\n"
+"%s"
+
+#: plugin.py:999
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Server returned error:\n"
+"%s"
+msgstr ""
+"Download Video nicht erfolgreich!\n"
+"\n"
+"zurückServerFehler:\n"
+"%s"
+
+#: plugin.py:1000
+#, python-format
+msgid ""
+"Video Download Failed!\n"
+"\n"
+"Unknown Error:\n"
+"%s"
+msgstr ""
+"Download Video nicht erfolgreich!\n"
+"\n"
+"Unbekannter Fehler:\n"
+"%s"
+
+#: plugin.py:1093
+msgid "Download"
+msgstr "Download"
+
+#: plugin.py:1099
+msgid "Add Bouquets"
+msgstr ""
+
+#: plugin.py:1100
+msgid "Remove Bouquet"
+msgstr ""
+
+#: plugin.py:1101
+msgid "Load M3U File"
+msgstr "Lade M3U Datei"
+
+#: plugin.py:1164
+msgid "Exit Plugin?"
+msgstr "Beenden ?"
+
+#: plugin.py:1208
+msgid ""
+"The MediaPlayer plugin is not installed!\n"
+"Please install it."
+msgstr ""
+"Mediaplayer Plugin ist nicht installiert!\n"
+"Bitte installieren Sie es."
+
+#: plugin.py:1309 plugin.py:2358 plugin.py:3560
+msgid "No valid list "
+msgstr "Keine gültige Liste"
+
+#: plugin.py:1312
+msgid ""
+"Please enter correct parameters in Config\n"
+" no valid list "
+msgstr ""
+"Bitte geben Sie die richtigen Parameter in die Config ein\n"
+"Keine gültige Liste"
+
+#: plugin.py:1348
+msgid ""
+"No Video to Download!!\n"
+"playlist_url != None"
+msgstr ""
+"Keine Video Downloads!!\n"
+"playlist_url != None"
+
+#: plugin.py:1354
+#, python-format
+msgid ""
+"DOWNLOAD VIDEO?\n"
+"%s"
+msgstr ""
+"DOWNLOAD VIDEO?\n"
+"%s"
+
+#: plugin.py:1356
+msgid "Live Player Active in Setting: set No for Record Live"
+msgstr "Live-Player aktiv in Einstellung: Legen Sie No für Record Live fest"
+
+#: plugin.py:1360
+msgid "No Video to Download\\Record!!"
+msgstr "Keine Heruntergeladene Videos / Aufnahmen!!"
+
+#: plugin.py:1388
+msgid "[DOWNLOAD] "
+msgstr "[DOWNLOAD] "
+
+#: plugin.py:1626
+msgid "Please enter the parental control pin code"
+msgstr "Bitte geben Sie den Pincode für die Kindersicherung ein"
+
+#: plugin.py:1626
+msgid "Enter pin code"
+msgstr "Geben Sie den PIN-Code ein"
+
+#: plugin.py:1634
+msgid "The pin code you entered is wrong."
+msgstr "Der PIN-Code, den Sie eingegeben haben, ist falsch."
+
+#: plugin.py:1709
+msgid "Combined Live/VOD"
+msgstr "Combined Live/VOD"
+
+#: plugin.py:1710
+#, python-format
+msgid "Convert Playlist to: %s ?"
+msgstr "Playlist in: %s konvertieren?"
+
+#: plugin.py:1847 plugin.py:2767
+msgid "Reload list in progress..."
+msgstr "Listen aktualisierung läuft..."
+
+#: plugin.py:1847 plugin.py:2767
+msgid "wait please..."
+msgstr "bitte warten..."
+
+#: plugin.py:1857
+msgid "Uninstall Team in progress..."
+msgstr "Uninstall Team in progress..."
+
+#: plugin.py:2190
+msgid "BLUE = START PLAY RECORDED VIDEO"
+msgstr "BLUE = START VIDEO-AUFNAHME"
+
+#: plugin.py:2456 plugin.py:2632 plugin.py:3155
+msgid "Remove"
+msgstr "Entfernen"
+
+#: plugin.py:2514
+msgid "Finished"
+msgstr "Fertig"
+
+#: plugin.py:2546
+#, python-format
+msgid "Do you want to remove %s ?"
+msgstr "Wirklich entfernen %s ?"
+
+#: plugin.py:2627
+#, python-format
+msgid "Put .m3u Files in Folder %s"
+msgstr "Setzen Sie .m3u Dateien in Ordner %s"
+
+#: plugin.py:2629
+msgid "OK: Preview"
+msgstr ""
+
+#: plugin.py:2633
+msgid "Make Bouquet"
+msgstr ""
+
+#: plugin.py:2692 plugin.py:3283
+#, python-format
+msgid "Do you want to remove: %s ?"
+msgstr "Möchten Sie entfernen: %s ?"
+
+#: plugin.py:2713
+#, python-format
+msgid "Do you want to Convert %s to favorite .tv ?"
+msgstr "Wollen Sie %s Favoriten .tv konvertieren?"
+
+#: plugin.py:2756
+msgid "Check on favorites lists..."
+msgstr "Überprüfe Favoriten..."
+
+#: plugin.py:2784
+msgid "Play"
+msgstr "Play"
+
+#: plugin.py:2785
+msgid "OK"
+msgstr "OK"
+
+#: plugin.py:2785
+msgid "Preview"
+msgstr "Vorschau"
+
+#: plugin.py:3154
+msgid "Rename"
+msgstr "Umbenennen"
+
+#: plugin.py:3156
+msgid "Import infos server"
+msgstr "Info Server importieren"
+
+#: plugin.py:3191
+#, python-format
+msgid "File saved to %s !"
+msgstr "Datei gespeichert in %s!"
+
+#: plugin.py:3201
+msgid "File not found /tmp/xc.txt!"
+msgstr "Info-Server importieren"
+
+#: plugin.py:3320
+#, python-format
+msgid "XCplugin Console Rename: %s"
+msgstr "XCplugin Console Rename: %s"
+
+#: plugin.py:3889
+msgid ""
+"XCplugin\n"
+"\n"
+"Reload list in progress...\n"
+"\n"
+"wait please..."
+msgstr ""
+"XCplugin\n"
+"\n"
+"Liste erneut laden ...\n"
+"\n"
+"warte bitte..."
+
+#~ msgid "OK: Anteprima"
+#~ msgstr "OK: Vorschau"
+
+#~ msgid "Create Bouquet"
+#~ msgstr "Bouquet erstellen"
+
+#~ msgid "Movie Folder"
+#~ msgstr "Filmordner"
+
+#~ msgid "Remove Bouquets"
+#~ msgstr "Entfernen Sie Blumensträuße"
+
+#~ msgid "Create Bouquets"
+#~ msgstr "Erstellen Sie Blumensträuße"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "Conversion type List %s"
+#~ msgstr "Konvertierungstyp Liste %s"
+
+#~ msgid "Folder file xml %s"
+#~ msgstr "Ordnerdatei xml %s"
+
+#~ msgid "Help"
+#~ msgstr "Hilfe"
+
+#~ msgid "Info"
+#~ msgstr "Info"
+
+#~ msgid "Info Epg"
+#~ msgstr "Info Epg"
+
+#~ msgid "LivePlayer Active %s"
+#~ msgstr "LivePlayer Aktiv %s"
+
+#~ msgid "Movie Folder %s"
+#~ msgstr "Filmordner %s"
+
+#~ msgid "Reload Playlists"
+#~ msgstr "Playlisten neu laden"
+
+#~ msgid "Settings"
+#~ msgstr "die Einstellungen"
+
+#~ msgid "Type Services %s"
+#~ msgstr "Type Services %s"
+
+#~ msgid "VNetSpeedInfo Active in Player %s"
+#~ msgstr "VNetSpeedInfo Aktive in Player in %s"

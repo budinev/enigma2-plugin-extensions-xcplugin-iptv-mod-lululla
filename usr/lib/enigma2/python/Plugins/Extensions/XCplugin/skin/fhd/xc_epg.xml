@@ -18,7 +18,7 @@
 	<eLabel position="45,630" size="625,2" backgroundColor="#303030" zPosition="10" />
 	<widget name="text_clear" position="780,145" size="1100,800" font="Regular;30" halign="left" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="3" />
 	<eLabel position="50,1000" size="10,40" backgroundColor="red" zPosition="1" />
-	<widget name="key_red" position="70,1000" size="300,40" font="Regular;32" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<widget name="key_red" position="70,1000" size="300,40" font="Regular;32" halign="left" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
     <widget source="session.VideoPicture" render="Pig" position="49,645" size="631,292" backgroundColor="transparent" zPosition="5" />
 
 </screen>

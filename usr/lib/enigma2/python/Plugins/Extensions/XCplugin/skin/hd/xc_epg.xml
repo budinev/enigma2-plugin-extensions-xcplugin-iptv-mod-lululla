@@ -27,5 +27,5 @@
 	<widget name="version" position="40,99" size="150,50" font="Regular;20" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="10" />    
 	<widget name="text_clear" position="550,110" size="700,570" font="Regular;18" halign="left" foregroundColor="#97bbff" backgroundColor="#000000" transparent="1" zPosition="1" />
 	<eLabel position="40,625" size="10,30" backgroundColor="red" zPosition="1" />
-	<widget name="key_red" position="60,625" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
+	<widget name="key_red" position="60,625" size="200,30" font="Regular;20" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
 </screen>

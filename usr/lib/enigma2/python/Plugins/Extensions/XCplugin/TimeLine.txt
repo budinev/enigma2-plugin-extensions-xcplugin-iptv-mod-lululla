@@ -167,6 +167,9 @@
 #remove preview (no )
 #6.4
 #fix epg on player
+#6.5
+#fix load xc_e2plugin.xml
+#major_fix
 #################################################################
 # selected_channel[0]) chan_counter          
 # selected_channel[1]) name of selected item in menu

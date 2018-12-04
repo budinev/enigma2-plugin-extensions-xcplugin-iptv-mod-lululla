@@ -28,7 +28,7 @@
 	</widget>
 	<widget name="version" position="40,99" size="150,50" font="Regular;20" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="10" />
 	<eLabel position="40,625" size="10,30" backgroundColor="red" zPosition="1" />
-	<widget name="key_red" position="60,625" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
+	<widget name="key_red" position="60,625" size="200,30" font="Regular;20" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
 	<eLabel position="40,665" size="10,30" backgroundColor="green" zPosition="1" />
-	<widget name="key_green" position="60,665" size="200,30" font="Regular;20" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
+	<widget name="key_green" position="60,665" size="200,30" font="Regular;20" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="left" />
 </screen>

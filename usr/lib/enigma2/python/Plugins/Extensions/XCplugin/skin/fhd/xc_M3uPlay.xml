@@ -1,4 +1,4 @@
-<!-- ***** M3U PLAYLIST 1920x1080 ***** 29/12/2017 /-->
+<!-- ***** M3U PLAYLIST 1920x1080 ***** 25/11/2018 /-->
 <screen name="xcM3uPlay" position="0,0" size="1920,1080" title="Playlist" backgroundColor="#000000" flags="wfNoBorder">
 	<ePixmap position="0,0" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/fhd/fullpanel1080.png" alphatest="blend" zPosition="-1" />
 	<ePixmap position="0,0" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/fhd/curve.png" alphatest="blend" zPosition="3" />
@@ -22,11 +22,11 @@
 	<widget name="key_green" position="70,1010" size="300,40" font="Regular;32" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
 	<eLabel position="50,955" size="10,40" backgroundColor="red" zPosition="1" />
 	<widget name="key_red" position="70,955" size="300,40" font="Regular;32" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
-    <widget source="session.VideoPicture" render="Pig" position="49,645" size="631,292" backgroundColor="transparent" zPosition="5" />
-<!--    
-    <widget name="okpreview" position="378,420" size="349,65" zPosition="3" font="Regular;32" foregroundColor="#ffff00" backgroundColor="#00000000" transparent="1" halign="left" valign="left" />
--->
     <eLabel position="710,1010" size="10,40" backgroundColor="#0143c1" zPosition="1" />
+	<widget name="key_blu" position="350,1010" size="350,40" font="Regular;32" halign="right" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+<!--    
 	<widget name="okpreview" position="350,1010" size="350,40" font="Regular;32" halign="right" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
-    
+-->  
+    <widget source="session.VideoPicture" render="Pig" position="49,645" size="631,292" backgroundColor="transparent" zPosition="5" />
+  
 </screen>

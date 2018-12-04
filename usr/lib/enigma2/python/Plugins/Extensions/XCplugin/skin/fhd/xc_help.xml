@@ -20,7 +20,7 @@
 	<!--widget name="infocredits" position="760,165" size="1110,550" font="Regular;28" halign="center" foregroundColor="#b0b0b0" backgroundColor="#101010" transparent="1" zPosition="1" /-->
 	<widget name="helpdesc" position="843,140" size="1016,888" font="Regular;28" halign="left" foregroundColor="yellow" backgroundColor="#101010" transparent="1" zPosition="1" />
 	<eLabel position="50,1000" size="10,40" backgroundColor="red" zPosition="1" />
-	<widget name="key_red" position="70,1000" size="300,40" font="Regular;32" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<widget name="key_red" position="70,1000" size="300,40" font="Regular;32" halign="left" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
     <ePixmap position="433,444" size="200,114" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/skin/fhd/pp-donate.png" scale="1" alphatest="blend" zPosition="1" />	
 	<eLabel text="lululla.altervista.org" position="404,568" size="350,40" font="Regular;26" foregroundColor="#ffff00" backgroundColor="#000000" zPosition="1" transparent="1" />
     <widget source="session.VideoPicture" render="Pig" position="49,645" size="631,292" backgroundColor="transparent" zPosition="5" />

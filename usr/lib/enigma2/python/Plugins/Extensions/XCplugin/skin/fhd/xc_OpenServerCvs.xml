@@ -33,12 +33,12 @@
         <!-- Buttons -->
 	<eLabel position="45,930" size="680,2" backgroundColor="#303030" zPosition="10" />
    	<eLabel position="710,1010" size="10,40" backgroundColor="#0143c1" zPosition="1" />
-	<widget name="key_blu" position="400,1010" size="300,40" font="Regular;32" halign="right" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<widget name="key_blu" position="400,1010" size="300,40" font="Regular;32" halign="right" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
 	<eLabel position="710,955" size="10,40" backgroundColor="yellow" zPosition="1" />
-	<widget name="key_yellow" position="400,955" size="300,40" font="Regular;32" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" halign="right" />
+	<widget name="key_yellow" position="400,955" size="300,40" font="Regular;32" halign="right" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" halign="right" />
 	<eLabel position="50,1010" size="10,40" backgroundColor="green" zPosition="1" />
-	<widget name="key_green" position="70,1010" size="300,40" font="Regular;32" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<widget name="key_green" position="70,1010" size="300,40" font="Regular;32" halign="left" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
 	<eLabel position="50,955" size="10,40" backgroundColor="red" zPosition="1" />
-	<widget name="key_red" position="70,955" size="300,40" font="Regular;32" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<widget name="key_red" position="70,955" size="300,40" font="Regular;32" halign="left" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
 
 </screen>

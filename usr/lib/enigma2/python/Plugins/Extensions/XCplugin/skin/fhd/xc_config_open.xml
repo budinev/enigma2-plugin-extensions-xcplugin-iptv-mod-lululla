@@ -25,27 +25,19 @@
     	<widget source="progresstext" render="Label" position="946,974" zPosition="1" font="Regular;30" halign="center" transparent="1" size="250,40" foregroundColor="#00cc99" backgroundColor="#000000" />
 	<!-- Info -->
 	<widget name="playlist" position="760,160" size="1110,60" font="Regular;40" halign="center" valign="center" foregroundColor="#ffffff" backgroundColor="#303030" transparent="0" zPosition="1" />
-   	<widget name="statusbar" position="880,1000" size="800,60" font="Regular;32" foregroundColor="#009900" backgroundColor="#101010" transparent="1" zPosition="3" />
+   	<widget name="statusbar" position="880,1000" size="950,60" font="Regular;32" foregroundColor="#009900" backgroundColor="#101010" transparent="1" zPosition="3" />
     <widget name="description" position="845,933" size="1000,60" font="Regular;32" foregroundColor="#009900" backgroundColor="#101010" transparent="1" zPosition="3" />
     <widget source="session.VideoPicture" render="Pig" position="49,645" size="631,292" backgroundColor="transparent" zPosition="5" />
 
-    <!--   	
-    <widget name="srvcsval" position="50,615" size="800,60" font="Regular;32" foregroundColor="#ffff00" backgroundColor="#10110" transparent="1" zPosition="3" />
-    <widget name="LivePlayer" position="50,660" size="800,50" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="2" />
-    <widget name="VNetSpeedInfo" position="50,700" size="800,50" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="2" />
-    <widget name="ptchxzz" position="50,740" size="800,50" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="2" />
-	<widget name="ptchmovie" position="50,780" size="800,50" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="2" />
-	<widget name="typem3utv" position="50,820" size="800,50" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="2" />
-       -->   
 	<!-- Buttons -->
 	<eLabel position="45,930" size="680,2" backgroundColor="#303030" zPosition="10" />
     <eLabel position="710,1010" size="10,40" backgroundColor="#0143c1" zPosition="1" />
-	<widget name="key_blu" position="400,1010" size="300,40" font="Regular;32" halign="right" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<widget name="key_blu" position="400,1010" size="300,40" font="Regular;32" halign="right" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
 	<eLabel position="710,955" size="10,40" backgroundColor="yellow" zPosition="1" />
-	<widget name="key_yellow" position="400,955" size="300,40" font="Regular;32" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" halign="right" />
+	<widget name="key_yellow" position="400,955" size="300,40" font="Regular;32" halign="right" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
 	<eLabel position="50,1010" size="10,40" backgroundColor="green" zPosition="1" />
-	<widget name="key_green" position="70,1010" size="300,40" font="Regular;32" halign="left" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<widget name="key_green" position="70,1010" size="300,40" font="Regular;32" halign="left" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
 	<eLabel position="50,955" size="10,40" backgroundColor="red" zPosition="1" />
-	<widget name="key_red" position="70,955" size="300,40" font="Regular;32" valign="center" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
+	<widget name="key_red" position="70,955" size="300,40" font="Regular;32" halign="left" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="1" />
     <widget name="info2" position="358,167" size="350,250" halign="left" font="Regular;30" foregroundColor="#00cc99" backgroundColor="#000000" transparent="1" zPosition="1" />
 </screen>

@@ -65,8 +65,8 @@ from Tools.Notifications import AddPopup
 # VERSION
 namefolder='XCplugin'
 descriptionplug='XtreamCode Mod V.'
-version=" 6.4"
-currversion="6.4"
+version=" 6.5"
+currversion="6.5"
 #
 global URL
 # URL = 'http://lululla.altervista.org/xcplugin-test/updateXcPlugin.txt'

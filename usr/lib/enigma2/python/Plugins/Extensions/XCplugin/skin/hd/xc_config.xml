@@ -21,14 +21,16 @@
     	<!-- info -->    
    	<eLabel position="40,380" size="405,2" backgroundColor="#303030" zPosition="10" />	
 	<widget name="playlist" position="500,100" size="750,35" font="Regular;24" halign="center" valign="center" foregroundColor="#ffffff" backgroundColor="#303030" transparent="0" zPosition="1" />
-    <widget name="description" position="546,561" size="640,30" font="Regular;20" foregroundColor="#009900" transparent="2" zPosition="2" />
-    <widget name="statusbar" position="547,600" size="640,30" font="Regular;20" foregroundColor="#009900" transparent="2" zPosition="2" />
+    <widget name="description" position="546,526" size="640,80" font="Regular;20" foregroundColor="#009900" transparent="2" zPosition="2" />
+    <widget name="statusbar" position="547,605" size="640,30" font="Regular;20" foregroundColor="#009900" transparent="2" zPosition="2" />
     <widget name="info2" position="210,110" size="260,100" font="Regular;20" halign="right" foregroundColor="#00cc99" transparent="1" zPosition="1" />	
     <widget source="session.VideoPicture" render="Pig" position="43,385" size="409,222" backgroundColor="transparent" zPosition="3" />
 
     <eLabel position="470,625" size="10,30" backgroundColor="#ffff00" zPosition="1" />
 	
         <!-- Buttons -->
+    <widget name="info3" position="215,260" size="260,90" font="Regular;20" halign="left" foregroundColor="#00cc99" transparent="1" zPosition="1" />
+               
     <eLabel position="470,665" size="10,30" backgroundColor="blue" zPosition="1" />
 	<widget name="key_blu" position="265,665" size="200,30" font="Regular;20" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" halign="right" />
     <eLabel position="40,620" size="435,2" backgroundColor="#303030" zPosition="10" />

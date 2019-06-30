@@ -27,17 +27,18 @@
    	<widget name="list" position="550,140" size="650,500" itemHeight="40" font="Regular;20" enableWrapAround="1" scrollbarMode="showOnDemand" foregroundColor="#808080" foregroundColorSelected="#ffffff" backgroundColor="#0b2049" backgroundColorSelected="#0b2049" transparent="1" zPosition="1" />
 	
     	<!-- info -->    
-   	<eLabel position="40,415" size="405,2" backgroundColor="#303030" zPosition="10" />	
+   	<eLabel position="40,370" size="405,2" backgroundColor="#303030" zPosition="10" />	
 	<widget name="playlist" position="500,100" size="750,35" font="Regular;24" halign="center" valign="center" foregroundColor="#ffffff" backgroundColor="#303030" transparent="0" zPosition="1" />
-	<widget name="srvcsval" position="40,425" size="640,50" font="Regular;20" foregroundColor="#ffff00" transparent="2" zPosition="2" />
+	<!--
+        <widget name="srvcsval" position="40,425" size="640,50" font="Regular;20" foregroundColor="#ffff00" transparent="2" zPosition="2" />
 	<widget name="LivePlayer" position="40,455" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
 	<widget name="VNetSpeedInfo" position="40,485" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
 	<widget name="ptchxzz" position="40,515" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
 	<widget name="ptchmovie" position="40,545" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
 	<widget name="typem3utv" position="40,575" size="640,50" font="Regular;20" foregroundColor="#ffffff" transparent="2" zPosition="2" />
-    
+        -->    
     <eLabel position="40,620" size="435,2" backgroundColor="#303030" zPosition="10" />
-    <widget source="session.VideoPicture" render="Pig" position="224,143" size="225,137" backgroundColor="transparent" zPosition="3" />
+    <widget source="session.VideoPicture" render="Pig" position="43,385" size="409,222" backgroundColor="transparent" zPosition="3" />
     
     <!-- Buttons -->
 	<eLabel position="470,665" size="10,30" backgroundColor="blue" zPosition="1" />

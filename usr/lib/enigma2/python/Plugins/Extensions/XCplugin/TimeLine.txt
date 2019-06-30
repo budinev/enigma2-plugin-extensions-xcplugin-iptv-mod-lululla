@@ -170,6 +170,12 @@
 #6.5
 #fix load xc_e2plugin.xml
 #major_fix
+#6.6
+#fix xc_e2plugin.xml
+#from menu config import /etc/enigma2/iptv.sh
+#6.6
+#fix directory config
+
 #################################################################
 # selected_channel[0]) chan_counter          
 # selected_channel[1]) name of selected item in menu

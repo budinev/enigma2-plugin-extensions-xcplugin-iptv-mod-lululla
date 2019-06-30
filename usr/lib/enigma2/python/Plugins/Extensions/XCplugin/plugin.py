@@ -1,3 +1,4 @@
+#25.06.2019
 #######################
 # -*- coding: utf-8 -*-
 #
@@ -40,7 +41,7 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Tools.Downloader import downloadWithProgress
 from Tools.LoadPixmap import LoadPixmap
 #from Tools.NumericalTextInput import NumericalTextInput
-from datetime import datetime
+from datetime import datetime, date
 from operator import itemgetter
 from os import environ as SetValue, getenv as ReturnValue
 from os import environ, listdir, path, readlink, system, rename
@@ -61,15 +62,18 @@ import urllib as ul
 import urllib2
 import time
 from Tools.Notifications import AddPopup
+from Components.config import config, ConfigSelection, getConfigListEntry, NoSave, ConfigText, ConfigDirectory
+from Components.ConfigList import *
+from Screens.LocationBox import LocationBox
+
 #!/usr/bin/env python
 # VERSION
 namefolder='XCplugin'
 descriptionplug='XtreamCode Mod V.'
-version=" 6.5"
-currversion="6.5"
+version=" 6.7"
+currversion="6.7"
 #
 global URL
-# URL = 'http://lululla.altervista.org/xcplugin-test/updateXcPlugin.txt'
 URL = 'http://patbuweb.com/xcplugin/updateXcPlugin.txt'
 
 global nochange
@@ -100,11 +104,10 @@ def DownloadInfo(url):
     print 'link:', link
     return link    
     
-#
+# SETTINGS #
 lnkpth = 'aHR0cDovL2x1bHVsbGEuYWx0ZXJ2aXN0YS5vcmcveGNwbHVnaW4tdGVzdC8='
 varlnkpth = base64.b64decode(lnkpth)
 
-# SETTINGS
 PLUGIN_PATH = '/usr/lib/enigma2/python/Plugins/Extensions/XCplugin'
 SKIN_PATH = PLUGIN_PATH
 HD = getDesktop(0).size()
@@ -112,10 +115,8 @@ BRAND = '/usr/lib/enigma2/python/boxbranding.so'
 BRANDP = '/usr/lib/enigma2/python/Plugins/PLi/__init__.pyo'
 BRANDPLI ='/usr/lib/enigma2/python/Tools/StbHardware.pyo'
 VIDEO_FMT_PRIORITY_MAP = {'38': 1, '37': 2, '22': 3, '18': 4, '35': 5, '34': 6}
-NTIMEOUT = 3
+NTIMEOUT = 10
 socket.setdefaulttimeout(NTIMEOUT)
-
-
 
 ##################################################################################
 from Components.Language import language
@@ -123,20 +124,16 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
 #import gettext
 PluginLanguageDomain = "XCplugin"
 PluginLanguagePath = '/usr/lib/enigma2/python/Plugins/Extensions/XCplugin/locale'
-
 def localeInit():
     lang = language.getLanguage()[:2]
     os.environ['LANGUAGE'] = lang
     gettext.bindtextdomain(PluginLanguageDomain, PluginLanguagePath)
     gettext.bindtextdomain('enigma2', resolveFilename(SCOPE_LANGUAGE, ''))
-
-
 def _(txt):
     t = gettext.dgettext(PluginLanguageDomain, txt)
     if t == txt:
         t = gettext.dgettext('enigma2', txt)
     return t
-
 localeInit()
 language.addCallback(localeInit)
 #####
@@ -151,15 +148,75 @@ if os.path.isfile(filterlist):
             start = ('": ' + '"' + '",' + ' "')
             mylist = start.join(lines)
             end = ('{"' + mylist + '": ' + '"' + '"' + "}")
-
             dict = eval(filtertmdb)
             filtertmdb = "".join( end.splitlines())
-            
             filtertmdb = dict
     except:
-
         filtertmdb = {'x264': '', '1080p': '', '1080i': '', '720p': '', 'VOD': '', 'vod': '', 'Ac3-evo': '', 'Hdrip': '', 'Xvid': ''}
-
+		
+#frossie	:CLEAN EPG WORD	
+def charRemove(text):
+        char = ['1080p',
+		 '2018',
+		 '2019',
+		 '2020',
+         '480p',
+         '4K',
+         '720p',
+         'ANIMAZIONE',
+         'APR',
+         'AVVENTURA',
+         'BIOGRAFICO',
+		 'BDRip',
+         'BluRay',
+         'CINEMA',
+         'COMMEDIA',
+         'DOCUMENTARIO',
+         'DRAMMATICO',		 
+         'FANTASCIENZA',
+         'FANTASY',
+		 'FEB',
+         'GEN',
+		 'GIU',
+         'HDCAM',
+         'HDTC',
+         'HDTS',
+         'LD',			 
+         'MAFIA',
+         'MAG',
+         'MARVEL',
+		 'MD',
+         'ORROR',	
+		 'NEW_AUDIO',
+         'POLIZ',	
+         'R3',
+		 'R6',
+         'SD',
+         'SENTIMENTALE',
+		 'TC',
+         'TEEN',
+         'TELECINE',
+         'TELESYNC',
+		 'THRILLER',
+		 'Uncensored',
+		 'V2',
+         'WEBDL',
+         'WEBRip',
+		 'WEB',
+         'WESTERN',
+		 '-',
+		 '_',
+		 '.',
+		 '+',
+         '[',
+         ']']
+		 
+        myreplace = text
+        for ch in char:
+            myreplace = myreplace.replace(ch, '').replace('  ', ' ').replace('   ', ' ').strip()
+        return myreplace
+		
+###########TMDb 
 #
 def ReloadBouquet():
     eDVBDB.getInstance().reloadServicelist()
@@ -172,12 +229,9 @@ def isExtEplayer3Available():
 def isGstPlayerAvailable():
     return os.path.isfile(eEnv.resolve('$bindir/gst-launch-1.0'))
 
-
-
 def OnclearMem():
         system("sync")
         system("echo 3 > /proc/sys/vm/drop_caches")
-
 
 def remove_line(filename, what):
     if os.path.isfile(filename):
@@ -197,53 +251,53 @@ def remove_line(filename, what):
 	# print 'ERROR servicewebts'
 
    
-def mount_movie():
-    pthmovie = []
-    if os.path.isfile('/proc/mounts'):
-        for line in open('/proc/mounts'):
-#x nas suspend ->> if '/dev/sd' in line or '/dev/disk/by-uuid/' in line or '/dev/mmc' in line or '/dev/mtdblock' in line:
-            if '/dev/sd' in line or '/dev/disk/by-uuid/' in line or '/dev/mmc' in line or '/dev/mtdblock' in line:
-                drive = line.split()[1].replace('\\040', ' ') + '/'
-
-                if drive== "/media/hdd/" :
-
-                    if not os.path.exists('/media/hdd/movie'):
-                        system('mkdir /media/hdd/movie')
-
-                if drive== "/media/usb/" :
-
-                    if not os.path.exists('/media/usb/movie'):
-                        system('mkdir /media/usb/movie') 
-                        
-                if drive== "/media/omb/" :
-                    drive = drive.replace('/media/omb/', '/media/omb/')
-                    if not os.path.exists('/media/omb/movie'):
-                        system('mkdir /media/omb/movie')   
-                    
-                if drive== "/media/ba/" :
-                    drive = drive.replace('/media/ba/', '/media/ba/')   
-                    if not os.path.exists('/media/ba/movie'):
-                        system('mkdir /media/ba/movie')
-                if not drive in pthmovie: 
-                    pthmovie.append(drive)
-    system('mkdir /tmp/movie')
-    pthmovie.append('/tmp/')
-    return pthmovie    
-
+# def mount_movie():
+    # pthmovie = []
+    # if os.path.isfile('/proc/mounts'):
+        # for line in open('/proc/mounts'):
+# #x nas suspend ->> if '/dev/sd' in line or '/dev/disk/by-uuid/' in line or '/dev/mmc' in line or '/dev/mtdblock' in line:
+            # if '/dev/sd' in line or '/dev/disk/by-uuid/' in line or '/dev/mmc' in line or '/dev/mtdblock' in line:
+                # drive = line.split()[1].replace('\\040', ' ') + '/'
+                # if drive== "/media/hdd/" :
+                    # if not os.path.exists('/media/hdd/movie'):
+                        # system('mkdir /media/hdd/movie')
+                # if drive== "/media/usb/" :
+                    # if not os.path.exists('/media/usb/movie'):
+                        # system('mkdir /media/usb/movie') 
+                # if drive== "/media/omb/" :
+                    # drive = drive.replace('/media/omb/', '/media/omb/')
+                    # if not os.path.exists('/media/omb/movie'):
+                        # system('mkdir /media/omb/movie')   
+                # if drive== "/media/ba/" :
+                    # drive = drive.replace('/media/ba/', '/media/ba/')   
+                    # if not os.path.exists('/media/ba/movie'):
+                        # system('mkdir /media/ba/movie')
+                # if not drive in pthmovie: 
+                    # pthmovie.append(drive)
+    # system('mkdir /tmp/movie')
+    # pthmovie.append('/tmp/')
+    # if os.path.exists('/media/net/NAS'):    
+        # pthmovie.append('/media/net/NAS')     
+    # return pthmovie    
 
 # CONFIG
 config.plugins.XCplugin = ConfigSubsection()
 config.plugins.XCplugin.hostaddress = ConfigText(default = "exampleserver.com:8888")
 config.plugins.XCplugin.user = ConfigText(default = "Enter Username", visible_width = 50, fixed_size = False)
 config.plugins.XCplugin.passw = ConfigPassword(default = "******", fixed_size = False, censor = '*')
+# config.plugins.XCplugin.user = NoSave(ConfigText(default = "Enter Username", visible_width = 50, fixed_size = False))
+# config.plugins.XCplugin.passw = NoSave(ConfigPassword(default = "******", fixed_size = False, censor = '*'))
+
 if os.path.exists ('/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp') and isExtEplayer3Available :
     config.plugins.XCplugin.services = ConfigSelection(default='Gstreamer', choices=['Gstreamer', 'Exteplayer3'])
 else:
     config.plugins.XCplugin.services = ConfigSelection(default='Gstreamer', choices=[('Gstreamer')])
 config.plugins.XCplugin.bouquettop = ConfigSelection(default='Bottom', choices = [('Bottom', _("Bottom")), ('Top', _("Top"))])
 
-config.plugins.XCplugin.pthmovie = ConfigSelection(choices = mount_movie())
-config.plugins.XCplugin.pthxmlfile = ConfigSelection(default='/etc/enigma2/xc', choices=['/etc/enigma2/xc', '/media/hdd/xc', '/media/usb/xc'])
+# config.plugins.XCplugin.pthmovie = ConfigSelection(choices = mount_movie())
+# config.plugins.XCplugin.pthxmlfile = ConfigSelection(default='/etc/enigma2/xc', choices=['/etc/enigma2/xc', '/media/hdd/xc', '/media/usb/xc'])
+config.plugins.XCplugin.pthmovie = ConfigDirectory(default='/media/usb/movie')
+config.plugins.XCplugin.pthxmlfile = ConfigDirectory(default='/etc/enigma2/xc')
 
 config.plugins.XCplugin.typem3utv = ConfigSelection(default = "MPEGTS to TV", choices = [("M3U to TV", _("M3U to TV")), ("MPEGTS to TV", _("MPEGTS to TV"))])
 config.plugins.XCplugin.strtmain = ConfigYesNo(default=True)
@@ -258,10 +312,10 @@ config.plugins.XCplugin.last_update = ConfigText(default = "none")
 config.plugins.XCplugin.timetype = ConfigSelection(default="interval", choices=[("interval", _("interval")), ("fixed time", _("fixed time"))])
 config.plugins.XCplugin.fixedtime = ConfigClock(default=0)
   
-
+            
 
 # SCREEN PATH SETTING
-iconpic = 'plugin.png'
+iconpic = PLUGIN_PATH + '/plugin.png'
 if HD.width() > 1280:
    CHANNEL_NUMBER = [3, 7, 60, 50, 0]
    CHANNEL_NAME = [70, 7, 1500, 50, 1]
@@ -269,10 +323,6 @@ if HD.width() > 1280:
    FONT_1 = ('Regular', 34)
    BLOCK_H = 50
    SKIN_PATH = PLUGIN_PATH + '/skin/fhd'
-   # iconpic = SKIN_PATH + '/plugin.png'
-   if fileExists(BRAND) or fileExists(BRANDP):   
-       # iconpic = SKIN_PATH + '/plugin.png'
-       iconpic = 'plugin.png'       
        
 else:
    CHANNEL_NUMBER = [3, 5, 40, 40, 0]
@@ -281,9 +331,6 @@ else:
    FONT_1 = ('Regular', 24)
    BLOCK_H = 30
    SKIN_PATH = PLUGIN_PATH + '/skin/hd'
-   # iconpic = SKIN_PATH + '/plugin.png'
-   if fileExists(BRAND) or fileExists(BRANDP):   
-       iconpic = SKIN_PATH + '/plugin.png'
 
 global piclogo, pictmp, xmlname, urlinfo
 piclogo = SKIN_PATH + '/iptvlogo.jpg'
@@ -313,15 +360,15 @@ def clear_img():
                 print 'ex delete 2'
                 
 #for aime_jeux
-Path_Movies = config.plugins.XCplugin.pthmovie.value+'movie/'
-Path_XML = config.plugins.XCplugin.pthxmlfile.value +'/'
+Path_Movies = config.plugins.XCplugin.pthmovie.value #+'movie/'
+Path_XML = config.plugins.XCplugin.pthxmlfile.value # +'/'
 system("cd / && cp -f " + piclogo + ' /tmp/poster.jpg')
 
                 
 # CONFIG XC
 class xc_config(Screen, ConfigListScreen):
         def __init__(self, session):
-                self.session = session
+
                 if fileExists(BRAND) or fileExists(BRANDP):
                    skin = SKIN_PATH + '/xc_config_open.xml'
                 else:
@@ -332,26 +379,25 @@ class xc_config(Screen, ConfigListScreen):
                 Screen.__init__(self, session)
                 self.setup_title = _("XtreamCode-Config")
                 self.onChangedEntry = [ ]
-                self.list = []
-                ConfigListScreen.__init__(self, self.list, session = self.session, on_change = self.changedEntry)
-                self.createSetup()
+                self.session = session				
+				
+
                 self["key_blu"] = Label(_("User Files"))
                 info = ''
-                self.downloading = False 
+                # self.downloading = False 
                 self['info2'] = Label(info)
+                self['info3'] = Label('')                
                 self['playlist'] = Label()
                 self['version'] = Label(_(' V. %s' % version))
                 self['statusbar'] = Label()
                 self['description'] = Label(_(''))
-                # self.createSetup()  
                 self.update_status()  
-                # self.showhide()                
                 self.downloading = False                    
-                self.ConfigText()               
-
                 self["key_red"] = Label(_("Back"))
                 self["key_green"] = Label(_("Save"))
-                self['key_yellow'] = Label(_("Update"))
+                # self['key_yellow'] = Label(_("Update"))
+                self['key_yellow'] = Label(_("Import") + " Server")
+                self['key_yellow'].hide()                
                 self['progress'] = Progress()
                 self['progresstext'] = StaticText()
                 self.icount = 0
@@ -368,14 +414,77 @@ class xc_config(Screen, ConfigListScreen):
                         "left": self.keyLeft,
                         "right": self.keyRight,
                         'help': self.help,
-                        'yellow': self.plugupdt,
+                        # 'yellow': self.plugupdt,
+                        'yellow': self.iptv_sh,                        
                         "blue":self.Team,
                         "green": self.cfgok,
                         'showVirtualKeyboard': self.KeyText,
-                        "ok": self.Ok_edit
-
+                        # "ok": self.Ok_edit
+                        "ok": self.ok							
                 }, -1)
+				
+                self.list = []
+                ConfigListScreen.__init__(self, self.list, session = self.session, on_change = self.changedEntry)
+                self.createSetup()
+                self.showhide()   
+                self.ConfigText()  				
                 self.onLayoutFinish.append(self.layoutFinished)
+                
+        def showhide(self):
+
+            if fileExists('/etc/enigma2/iptv.sh'):
+                self['key_yellow'].show()
+                self['info3'].setText('import information from\n /etc/enigma2/iptv.sh')
+            else:
+                self['key_yellow'].hide()
+                self['info3'].setText('')                
+                
+        def iptv_sh(self):        
+            self.session.openWithCallback(self.importIptv_sh, MessageBox, _('SERVER IMPORT IPTV-SH?') , type=MessageBox.TYPE_YESNO, timeout = 10, default = False)
+      
+        def importIptv_sh(self, result):
+            if result:
+            
+                iptvsh = '/etc/enigma2/iptv.sh'
+                if fileExists(iptvsh):            
+                    # if config.plugins.XCplugin.hostaddress.value == 'exampleserver.com:8888' :    
+                    f1 = open(iptvsh, 'r+')
+                    fpage = f1.read()
+                    print fpage
+                    regexcat = 'USERNAME="(.*?)".*?PASSWORD="(.*?)".*?url="http://(.*?)/get.php.*?'
+                    match = re.compile(regexcat, re.DOTALL).findall(fpage)
+                    for usernamesh, passwordsh, urlsh in match:
+                            print 'URL: ', urlsh 
+                            print 'USERNAME: ', usernamesh
+                            print 'PASSWORD: ', passwordsh 
+                            urlsh = urlsh.replace('"', '')
+                            usernamesh = usernamesh.replace('"', '')
+                            passwordsh = passwordsh.replace('"', '')
+                            print 'urlsh: ', urlsh 
+                            print 'usernamesh: ', usernamesh
+                            print 'passwordsh: ', passwordsh                     
+                        
+                            config.plugins.XCplugin.hostaddress.setValue(urlsh)
+                            config.plugins.XCplugin.user.setValue(usernamesh)
+                            config.plugins.XCplugin.passw.setValue(passwordsh) 
+                        
+                            print 'host ', config.plugins.XCplugin.hostaddress.value 
+                        
+                    xtream_e2portal_url = 'http://' + config.plugins.XCplugin.hostaddress.value + '/enigma2.php'   #con config.value
+                    username = config.plugins.XCplugin.user.value  #con config.value
+                    password = config.plugins.XCplugin.passw.value  #con config.value
+                    filesave = 'xc_' + config.plugins.XCplugin.user.value + '.xml' 
+                    filesave = filesave.replace(':','_')
+                    filesave = filesave.lower()
+                    pth= config.plugins.XCplugin.pthxmlfile.value 
+                    print 'pth:', pth                
+                    f5 = open(pth + filesave, "w") 
+                    f5.write(str('<?xml version="1.0" encoding="UTF-8" ?>\n' + '<items>\n' + '<plugin_version>' + currversion + '</plugin_version>\n' +'<xtream_e2portal_url><![CDATA[http://'+ config.plugins.XCplugin.hostaddress.value + '/enigma2.php]]></xtream_e2portal_url>\n' + '<username>' + config.plugins.XCplugin.user.value + '</username>\n' + '<password>' + config.plugins.XCplugin.passw.value + '</password>\n'+ '</items>'))
+                    f5.close() 
+                    self.ConfigText()
+                else:
+                    self.mbox = self.session.open(MessageBox, (_('Missing %s !') % iptvsh), MessageBox.TYPE_INFO, timeout=4)   
+                
 
         def update_status(self):
             if config.plugins.XCplugin.autobouquetupdate:
@@ -400,19 +509,17 @@ class xc_config(Screen, ConfigListScreen):
             self.list.append(getConfigListEntry(_('Server Password'), config.plugins.XCplugin.passw, _("Enter Password"))) 
             xmlname = config.plugins.XCplugin.hostaddress.value
             self.list.append(getConfigListEntry(_('Automatic bouquet update (schedule):'), config.plugins.XCplugin.autobouquetupdate, _("Active Automatic Bouquet Update")))
-
             if config.plugins.XCplugin.autobouquetupdate.getValue():
                 self.list.append(getConfigListEntry(indent + _("Schedule type:"), config.plugins.XCplugin.timetype, _("At an interval of hours or at a fixed time")))
                 if config.plugins.XCplugin.timetype.value == 'interval':
                     self.list.append(getConfigListEntry(2 * indent + _("Update interval (hours):"), config.plugins.XCplugin.updateinterval, _("Configure every interval of hours from now")))
                 if config.plugins.XCplugin.timetype.value == 'fixed time':
                     self.list.append(getConfigListEntry(2 * indent + _("Time to start update:") , config.plugins.XCplugin.fixedtime, _("Configure at a fixed time")))                     
-
             self.list.append(getConfigListEntry(_("Services Type"), config.plugins.XCplugin.services, _("Configure service Reference Gstreamer or Exteplayer3")))
             self.list.append(getConfigListEntry(_("LivePlayer Active "), config.plugins.XCplugin.LivePlayer, _("Live Player for Stream .ts: set No for Record Live")))              
             self.list.append(getConfigListEntry(_("NetSpeed in Player "), config.plugins.XCplugin.VNetSpeedInfo, _("Use NetSpeed test in Vod and Live Player")))
-            self.list.append(getConfigListEntry(_("Folder user file .xml"), config.plugins.XCplugin.pthxmlfile, _("Configure folder containing .xml files")))
-            self.list.append(getConfigListEntry(_("Media Folder"), config.plugins.XCplugin.pthmovie, _("Configure folder containing movie files")))
+            self.list.append(getConfigListEntry(_("Folder user file .xml"), config.plugins.XCplugin.pthxmlfile, _("Configure folder containing .xml files\nPress 'OK' to change location.")))
+            self.list.append(getConfigListEntry(_("Media Folder"), config.plugins.XCplugin.pthmovie, _("Configure folder containing movie files\nPress 'OK' to change location.")))
             self.list.append(getConfigListEntry(_("Conversion type Output "), config.plugins.XCplugin.typem3utv, _("Configure type of stream to be downloaded by conversion")))
             self.list.append(getConfigListEntry(_("Place IPTV bouquets at "), config.plugins.XCplugin.bouquettop, _("Configure to place the bouquets of the converted lists")))            
             self.list.append(getConfigListEntry(_('Auto Update Plugin:'), config.plugins.XCplugin.autoupd, _("Configure autoupdate plugin")))
@@ -440,27 +547,55 @@ class xc_config(Screen, ConfigListScreen):
             ConfigListScreen.keyLeft(self)
             print "current selection:", self["config"].l.getCurrentSelection()
             self.createSetup()
+            self.showhide()
 
         def keyRight(self):
             ConfigListScreen.keyRight(self)
             print "current selection:", self["config"].l.getCurrentSelection()
             self.createSetup()
-        def Ok_edit(self):    
-            ConfigListScreen.keyRight(self)
-            print "current selection:", self["config"].l.getCurrentSelection()
-            self.createSetup()
+            self.showhide()            
+        # def Ok_edit(self):    
+            # ConfigListScreen.keyRight(self)
+            # print "current selection:", self["config"].l.getCurrentSelection()
+            # self.createSetup()
+            # self.showhide() 		 
+        def ok(self):  											 
+            ConfigListScreen.keyOK(self)
+            sel = self['config'].getCurrent()[1]
+            if sel and sel == config.plugins.XCplugin.pthmovie:
+                self.setting = 'pthmovie'
+                self.openDirectoryBrowser(config.plugins.XCplugin.pthmovie.value)
+            if sel and sel == config.plugins.XCplugin.pthxmlfile:
+                self.setting = 'pthxmlfile'
+                self.openDirectoryBrowser(config.plugins.XCplugin.pthxmlfile.value)
+																								 
+            else:
+                pass								
+        def openDirectoryBrowser(self, path):
+            try:
+                self.session.openWithCallback(
+                 self.openDirectoryBrowserCB,
+                 LocationBox,
+                 windowTitle=_('Choose Directory:'),
+                 text=_('Choose directory'),
+                 currDir=str(path),
+                 bookmarks=config.movielist.videodirs,
+                 autoAdd=False,
+                 editDir=True,
+                 inhibitDirs=['/bin', '/boot', '/dev', '/home', '/lib', '/proc', '/run', '/sbin', '/sys', '/var'],
+                 minFree=15)
+            except Exception as e:
+                print ('openDirectoryBrowser get failed: ', str(e))
 
-        # def plugupdt(self):
+        def openDirectoryBrowserCB(self, path):
+                if path is not None:
+                    if self.setting == 'pthmovie':
+                        config.plugins.XCplugin.pthmovie.setValue(path)
+                    if self.setting == 'pthxmlfile':
+                        config.plugins.XCplugin.pthxmlfile.setValue(path)
+                return            
+           
 
-            # global lstvrs
-            # lstvrs= DownloadInfo(URL)
-            # if float(lstvrs) > float(currversion):
-                # self.session.openWithCallback(self.runupdate, MessageBox, (_('New update available!!\n\n Do you want update plugin ?')), MessageBox.TYPE_YESNO, timeout = 15, default = False)   
-            # elif float(lstvrs) == float(currversion):
-                # self['info2'].setText(_('\nXcPlugin is Last version!'))
-            # else:
-                # self['info2'].setText('\nXcPlugin Server Off!')
-                
         def plugupdt(self):
 
             global lstvrs
@@ -471,8 +606,6 @@ class xc_config(Screen, ConfigListScreen):
                 self['info2'].setText(_('\nXcPlugin is Last version!'))
             else:
                 self['info2'].setText('\nXcPlugin Server Off!')                
-                
-                
 
         def runupdate(self, result):
             if result:
@@ -490,12 +623,29 @@ class xc_config(Screen, ConfigListScreen):
                 self['info2'].setText(_('Updates available!'))
                 return                
                 
+        # def downloadFinished(self, string=""):
+            # self["info2"].setText(_("Install update..."))
+            # from Screens.Ipkg import Ipkg
+            # from Components.Ipkg import IpkgComponent
+            # self.cmdList = [(IpkgComponent.CMD_INSTALL, {'package': self.dlfile})]
+            # self.session.openWithCallback(self.installFinished, Ipkg, cmdList=self.cmdList)
+            
         def downloadFinished(self, string=""):
             self["info2"].setText(_("Install update..."))
-            from Screens.Ipkg import Ipkg
-            from Components.Ipkg import IpkgComponent
-            self.cmdList = [(IpkgComponent.CMD_INSTALL, {'package': self.dlfile})]
-            self.session.openWithCallback(self.installFinished, Ipkg, cmdList=self.cmdList)
+            checkfile = '/tmp/xc/tmp.ipk'
+            # self.timer = eTimer()
+            # self.timer.start(100, True)
+            if os.path.exists(checkfile):
+                self.session.open(Console, _('Installing: '), ['opkg install -force-overwrite -force-depends %s' % checkfile])
+                # if fileExists(BRAND)or fileExists(BRANDP):
+                    # self.timer.callback.append(deletetmp) #pli
+                # else:
+                    # self.timer_conn = self.timer.timeout.connect(deletetmp) #cvs        
+                self['info2'].setText(_('Installation performed successfully!'))      
+            self['progresstext'].text = ''  
+            self.progclear = 0
+            self['progress'].setValue(self.progclear)
+        
 
         def installFinished(self, string=""):
             self['info2'].setText(_('Restart Interface Please!'))         
@@ -538,21 +688,19 @@ class xc_config(Screen, ConfigListScreen):
         def check_xcplugin_xml(self):
             if not os.path.exists(config.plugins.XCplugin.pthxmlfile.value):
                 system('mkdir ' + config.plugins.XCplugin.pthxmlfile.value)
-            if not fileExists(config.plugins.XCplugin.pthxmlfile.value + '/' + 'xc_e2_plugin.xml'):
+            if not fileExists(config.plugins.XCplugin.pthxmlfile.value  + 'xc_e2_plugin.xml'):
                 filesave = 'xc_e2_plugin.xml' 
-                pth= config.plugins.XCplugin.pthxmlfile.value + '/'
+                pth= config.plugins.XCplugin.pthxmlfile.value 
                 print 'pth:', pth                
                 f5 = open(pth + filesave, "w") 
-                f5.write(str('<?xml version="1.0" encoding="UTF-8" ?>\n' + '<items>\n' + '<plugin_version>' + currversion + '</plugin_version>\n' +'<xtream_e2portal_url><![CDATA[http://exampleserver.com:8888/enigma2.php]]></xtream_e2portal_url>\n' + '<username>Enter Username</username>\n' + '<password>Enter Password</password>\n'+ '</items>'))
+                f5.write(str('<?xml version="1.0" encoding="UTF-8" ?>\n' + '<items>\n' + '<plugin_version>' + currversion + '</plugin_version>\n' +'<xtream_e2portal_url><![CDATA[http://exampleserver.com:8888/enigma2.php]]></xtream_e2portal_url>\n' + '<username>USERNAME</username>\n' + '<password>PASSWORD</password>\n'+ '</items>'))
                 f5.close()
                 
         def xml_plugin(self):
             filesave = 'xc_' + config.plugins.XCplugin.user.value + '.xml' 
-            
             filesave = filesave.replace(':','_')
             filesave = filesave.lower()
-            
-            pth= config.plugins.XCplugin.pthxmlfile.value + '/'
+            pth= config.plugins.XCplugin.pthxmlfile.value 
             print 'pth:', pth                
             f5 = open(pth + filesave, "w") 
             f5.write(str('<?xml version="1.0" encoding="UTF-8" ?>\n' + '<items>\n' + '<plugin_version>' + currversion + '</plugin_version>\n' +'<xtream_e2portal_url><![CDATA[http://'+ config.plugins.XCplugin.hostaddress.value + '/enigma2.php]]></xtream_e2portal_url>\n' + '<username>' + config.plugins.XCplugin.user.value + '</username>\n' + '<password>' + config.plugins.XCplugin.passw.value + '</password>\n'+ '</items>'))
@@ -566,7 +714,6 @@ class xc_config(Screen, ConfigListScreen):
                 for x in self['config'].list:
                     x[1].save()
                 configfile.save()
-
                 nochange = False
                 # global STREAMS
                 # STREAMS = iptv_streamse()
@@ -574,7 +721,6 @@ class xc_config(Screen, ConfigListScreen):
                 # # self.close(STREAMS.get_list(STREAMS.xtream_e2portal_url))                
                 # if STREAMS.xtream_e2portal_url and STREAMS.xtream_e2portal_url != 'exampleserver.com:8888' :
                     # self.close(STREAMS.get_list(STREAMS.xtream_e2portal_url)) 
-        
             # else:
                 # self.close()
 
@@ -662,7 +808,7 @@ class iptv_streamse():
         self.clear_url = ''
         self.img_loader = False
         self.images_tmp_path = '/tmp'
-        self.moviefolder = config.plugins.XCplugin.pthmovie.value + 'movie/'
+        self.moviefolder = config.plugins.XCplugin.pthmovie.value #+ 'movie/'
         self.trial = ''
         self.banned_text = ''
         self.trial_time = 30
@@ -680,7 +826,7 @@ class iptv_streamse():
         if config.plugins.XCplugin.hostaddress.value != 'exampleserver.com:8888' :
             MODUL = html_parser_moduls()
 
-
+            
     def MoviesFolde(self):
         return self.moviefolder
 
@@ -820,12 +966,14 @@ class iptv_streamse():
             urlinfo = url
             print "urlinfo:", urlinfo     
             try:
-                #
-                user_agent= {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'}
+                # #
+                # user_agent= {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+                 # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'}
                 
-                #########
-                req = urllib2.Request(url, None, user_agent)
+                # #########
+                # req = urllib2.Request(url, None, user_agent)
+                req = urllib2.Request(url, None, {'User-agent': 'Xtream-Codes Enigma2 Plugin',
+                 'Connection': 'Close'})                
 
                 if self.server_oki == True:
                     xmlstream = urllib2.urlopen(req, timeout=NTIMEOUT).read()
@@ -1264,7 +1412,6 @@ class xc_Main(Screen):
     def xcPlay(self):
         self.session.open(xc_Play) 
 
-    #
 ###################################            
     def show_more_info(self):
         try:
@@ -1272,6 +1419,7 @@ class xc_Main(Screen):
                 selected_channel = self.channel_list[self.mlist.getSelectionIndex()] 
 
                 if fileExists("/usr/lib/enigma2/python/Plugins/Extensions/TMBD/plugin.pyo"):
+                    print 'TMDB v.8.3'
                     from Plugins.Extensions.TMBD.plugin import TMBD         #TMDB v.8.3           
                     if selected_channel[2] != None:
                         text = re.compile('<[\\/\\!]*?[^<>]*?>')
@@ -1283,10 +1431,14 @@ class xc_Main(Screen):
                                 HHHHH = self.show_more_info_Title(selected_channel)
                                 self.session.open(TMBD, HHHHH, False)
                         else:
+                                print 'text one: ', text
+                                text = charRemove(text)
                                 self.session.open(TMBD, text, False) 
+  
 
                 elif fileExists('/usr/lib/enigma2/python/Plugins/Extensions/tmdb/plugin.pyo'):
                     from Plugins.Extensions.tmdb.tmdb import tmdbScreen #tmdb 7.3
+                    print 'TMDB v.7.3'
 
                     if selected_channel[2] != None:
                         text = re.compile('<[\\/\\!]*?[^<>]*?>')
@@ -1306,11 +1458,13 @@ class xc_Main(Screen):
                             HHHHH = self.show_more_info_Title(selected_channel)
                             self.session.open(tmdbScreen, HHHHH, 2)
                         else:
+                            service = charRemove(service)
                             self.session.open(tmdbScreen, service, 2)                         
 
 
                 elif os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/IMDb/plugin.pyo'):
                     from Plugins.Extensions.IMDb.plugin import IMDB
+                    print 'IMDB '
                 
                     if selected_channel[2] != None:
                         text = re.compile('<[\\/\\!]*?[^<>]*?>')
@@ -1321,7 +1475,9 @@ class xc_Main(Screen):
                             HHHHH = self.show_more_info_Title(selected_channel)
                             self.session.open(IMDB, HHHHH)
                         else:
+                            text = charRemove(text)
                             self.session.open(IMDB, text)
+                            
                         
                 elif selected_channel[2] != None:
                     text = re.compile('<[\\/\\!]*?[^<>]*?>')
@@ -1348,14 +1504,13 @@ class xc_Main(Screen):
                 AAA = self.descr[2].split("]")[1:][0]
                 BBB = AAA.split("(")[:1][0]
                 text_clear_1 = text.sub('', BBB).replace(' ',' ').replace('\n',' ').replace('\t',' ').replace('\r',' ')
-                # return
+                print 'text_clear_1 TRUC: ', text_clear_1
             else:
                 text_clear_1 = 'No Even'
         except Exception as ex:
             text_clear = 'mkach'
         return text_clear_1 
         
-  
 #key REC in test 
 
     def check_download_vod(self):
@@ -1389,7 +1544,7 @@ class xc_Main(Screen):
 
             try:
 
-                movie = config.plugins.XCplugin.pthmovie.value + 'movie/'            
+                movie = config.plugins.XCplugin.pthmovie.value #+ 'movie/'            
                 self['state'].setText('Download VOD')
                 useragent = "--header='User-Agent: QuickTime/7.6.2 (qtver=7.6.2;os=Windows NT 5.1Service Pack 3)'"
                 ende = 'mp4'
@@ -1415,8 +1570,6 @@ class xc_Main(Screen):
                 print 'ERROR download_vod'
 
 
-
-
     def LastJobView(self):
         currentjob = None
         for job in JobManager.getPendingJobs():
@@ -1426,7 +1579,7 @@ class xc_Main(Screen):
 
     def createMetaFile(self, filename):
         try:
-            movie = config.plugins.XCplugin.pthmovie.value + 'movie/'
+            movie = config.plugins.XCplugin.pthmovie.value #+ 'movie/'
             text = re.compile('<[\\/\\!]*?[^<>]*?>')
             text_clear = ''
             if self.vod_entry[2] != None:
@@ -1631,7 +1784,6 @@ class xc_Main(Screen):
             if config.ParentalControl.configured.value:
                 a = '+18', 'ADULTI', 'ADULT', 'ADULTS', 'AMATIX', 'BRAZZ', 'BRAZZERS', 'CANDY' 'COLMAX', 'DARING', 'HOT', 'HOTCLUB', 'HUST', 'HUSTL', 'LIFE TV', 'CENTOXCENTO', 'SCT', 'AMATEUR', 'EVIL ANGEL', 'SESTO SENSO', 'LIBID', 'LOV', 'MAN X', 'MAN-X', 'MANX', 'PENTHOUSE', 'PINK SHOW', 'PINK X', 'PINK-SHOW', 'PINK-X', 'PINKSHOW', 'PINKX', 'PLATINUM', 'PLAYB', 'PORN', 'RED LIGHT', 'RED-LIGHT', 'REDLIGHT','REALITY KINGS', 'SEX', 'SPICE', 'STARS', 'VENUS', 'VIVID', 'XX', 'XXL', 'XXX', 'CAZZO', 'FIGA', 'CULO', 'SEXTREME', 'XMUVI', 'DUSK', 'ARABEST', 'LIVECHANNEL', 'BLUE', 'PLAYBOY', 'adulti', 'adult', 'adults', 'amatix', 'brazz', 'brazzers', 'candy' 'colmax', 'daring', 'hotclub', 'hust', 'hustl', 'life tv', 'centoxcento', 'sct', 'amateur', 'evil angel', 'sesto senso', 'libid', 'lov', 'man x', 'man-x', 'manx', 'penthouse', 'pink show', 'pink x', 'pink-show', 'pink-x', 'pinkshow', 'pinkx', 'platinum', 'playb', 'porn', 'red light', 'red-light', 'redlight','reality kings', 'sex', 'spice', 'stars', 'venus', 'vivid', 'xx', 'xxl', 'xxx', 'cazzo', 'figa', 'culo', 'sextreme', 'xmuvi', 'dusk', 'arabest', 'livechannel', 'blue', 'playboy', 'hot', 'Adulti', 'Adult', 'Adults', 'Amatix', 'Brazz', 'Brazzers', 'Candy' 'Colmax', 'Daring', 'Hotclub', 'Hust', 'Hustl', 'Life Tv', 'Centoxcento', 'Sct', 'Amateur', 'Evil Angel', 'Sesto Senso', 'Libid', 'Lov', 'Man X', 'Man-X', 'Manx', 'Penthouse', 'Pink Show', 'Pink X', 'Pink-Show', 'Pink-X', 'Pinkshow', 'Pinkx', 'Platinum', 'Playb', 'Porn', 'Red Light', 'Red-Light', 'Redlight','Reality Kings', 'Sex', 'Spice', 'Stars', 'Venus', 'Vivid', 'Xx', 'Xxl', 'Xxx', 'Cazzo', 'Figa', 'Culo', 'Sextreme', 'Xmuvi', 'Dusk', 'Arabest', 'Livechannel', 'Blue', 'Playboy', 'Hot'
                 if any(s in str(selected_channel[1] or selected_channel[4] or selected_channel[5] or selected_channel[6]) for s in a):
-           
                 # if any(s in str(selected_channel[1] or selected_channel[2] or selected_channel[4] or selected_channel[5] or selected_channel[6] or selected_channel[8]) for s in a):
                     self.allow2()  
                 else:
@@ -1667,8 +1819,6 @@ class xc_Main(Screen):
                 STREAMS.get_list(playlist_url)
                 self.update_channellist()
             if stream_url != None:
-
-                
                 if stream_url.find('.ts') > 0:
                     STREAMS.video_status = True
                     STREAMS.play_vod = False
@@ -1785,7 +1935,7 @@ class xc_Main(Screen):
 
            
         else:
-            pthMovie = config.plugins.XCplugin.pthmovie.value + 'movie/'#'%s' % config.plugins.XCplugin.pthmovie.value
+            pthMovie = config.plugins.XCplugin.pthmovie.value #+ 'movie/'#'%s' % config.plugins.XCplugin.pthmovie.value
             xc1 = STREAMS.playlistname
             tag='suls_iptv_'
             namebouquet = xc1
@@ -1810,7 +1960,7 @@ class xc_Main(Screen):
             pth2 = pthMovie
             namebouquet = pth2 + '%s.m3u' % namebouquet.encode('utf-8')
             name = namebouquet.replace('.m3u', '').replace(pth2, '')
-            pth =  config.plugins.XCplugin.pthmovie.value + 'movie/' 
+            pth =  config.plugins.XCplugin.pthmovie.value #+ 'movie/' 
             
             xcname = 'userbouquet.%s%s_.tv' % (tag, name)            
             self.iConsole = iConsole()
@@ -2196,7 +2346,7 @@ class xc_Player(Screen, InfoBarBase, IPTVInfoBarShowHide, InfoBarSeek, InfoBarAu
             if STREAMS.trial != '':
                 self.session.open(MessageBox, 'Trialversion dont support this function', type=MessageBox.TYPE_INFO, timeout=10)
             else:
-                movie = config.plugins.XCplugin.pthmovie.value + 'movie/'
+                movie = config.plugins.XCplugin.pthmovie.value #+ 'movie/'
                 self.vod_entry = STREAMS.iptv_list[STREAMS.list_index]
                 self.vod_url = self.vod_entry[4]
                 self.title = self.vod_entry[1]
@@ -2238,7 +2388,7 @@ class xc_Player(Screen, InfoBarBase, IPTVInfoBarShowHide, InfoBarSeek, InfoBarAu
 
     def createMetaFile(self, filename):
         try:
-            movie = config.plugins.XCplugin.pthmovie.value + 'movie/'
+            movie = config.plugins.XCplugin.pthmovie.value #+  'movie/'
             text = re.compile('<[\\/\\!]*?[^<>]*?>')
             text_clear = ''
             if self.vod_entry[2] != None:
@@ -2516,7 +2666,7 @@ class xc_StreamTasks(Screen):
 
 
     def getMovieList(self):
-        movie = config.plugins.XCplugin.pthmovie.value + 'movie/'
+        movie = config.plugins.XCplugin.pthmovie.value #+ 'movie/'
         filelist = listdir(movie)
 
         if filelist is not None:
@@ -2530,7 +2680,7 @@ class xc_StreamTasks(Screen):
 
 
     def keyOK(self):
-        movie = config.plugins.XCplugin.pthmovie.value + 'movie/'
+        movie = config.plugins.XCplugin.pthmovie.value #+  'movie/'
         current = self['movielist'].getCurrent()
         if current:
             if current[0] == 'movie':
@@ -2553,7 +2703,7 @@ class xc_StreamTasks(Screen):
 
 
     def message1(self):
-        movie = config.plugins.XCplugin.pthmovie.value + 'movie/'
+        movie = config.plugins.XCplugin.pthmovie.value #+  'movie/'
         current = self['movielist'].getCurrent()
         sel = movie + current[1]
         dom = sel
@@ -2561,7 +2711,7 @@ class xc_StreamTasks(Screen):
 
     def callMyMsg1(self, result):
         if result:
-            movie = config.plugins.XCplugin.pthmovie.value + 'movie/'
+            movie = config.plugins.XCplugin.pthmovie.value #+  'movie/'
             current = self['movielist'].getCurrent()
             sel = movie + current[1]
             os.remove(sel)
@@ -2620,6 +2770,7 @@ class xcM3UList(MenuList):
             self.l.setItemHeight(22)
             textfont = int(16)
             self.l.setFont(0, gFont('Regular', textfont))    
+            
 class xc_Play(Screen):
     def __init__(self, session):
         self.session = session
@@ -2636,7 +2787,7 @@ class xc_Play(Screen):
         srefInit = self.initialservice
 
         # OnclearMem()
-        movie = config.plugins.XCplugin.pthmovie.value + 'movie/'
+        movie = config.plugins.XCplugin.pthmovie.value #+  'movie/'
         self.name = movie
         self['path'] = Label(_('Put .m3u Files in Folder %s') % movie)
         self['version'] = Label(_(' V. %s' % version))
@@ -2656,7 +2807,7 @@ class xc_Play(Screen):
     def openList(self):
         self.names = []
         self.Movies = []
-        path = config.plugins.XCplugin.pthmovie.value + 'movie/'        
+        path = config.plugins.XCplugin.pthmovie.value #+  'movie/'        
         # path = self.name
         AA = ['.mkv','.mp4','.avi','.m3u']
         for root, dirs, files in os.walk(path):
@@ -2747,7 +2898,7 @@ class xc_Play(Screen):
         if idx == -1 or None:
             return
         else:
-            path = config.plugins.XCplugin.pthmovie.value + 'movie/'
+            path = config.plugins.XCplugin.pthmovie.value #+  'movie/'
             name = path + self.names[idx]
             namel = self.names[idx]
             # pth = self.name
@@ -2812,7 +2963,7 @@ class xc_M3uPlay(Screen):
          'cancel': self.cancel}, -2)
         self['live'] = Label('')
         self['live'].setText('')
-        path = config.plugins.XCplugin.pthmovie.value + 'movie/'
+        path = config.plugins.XCplugin.pthmovie.value #+  'movie/'
         self.name = name
         self.onLayoutFinish.append(self.playList)
 
@@ -2922,12 +3073,15 @@ class M3uPlay2(Screen, InfoBarMenu, InfoBarBase, InfoBarSeek, InfoBarNotificatio
         if config.plugins.XCplugin.services.value == 'Gstreamer':
             ref = '4097:0:1:0:0:0:0:0:0:0:' + url
         else:
-            ref = '5002:0:1:0:0:0:0:0:0:0:' + url          
+            ref = '5002:0:1:0:0:0:0:0:0:0:' + url       
         sref = eServiceReference(ref)
         sref.setName(self.name)
         self.session.nav.stopService()
         self.session.nav.playService(sref)
     
+        
+    def keyNumberGlobal(self, number):
+        self['text'].number(number)
 
     def cancel(self):
         self.session.nav.stopService()
@@ -3006,26 +3160,27 @@ class xc_help(Screen):
         conthelp += "\n"
         conthelp = " <<<XC-PLUGIN HELP INFO>>> \n\n"
         conthelp += "--> MAIN: \n"
-        conthelp += "Menu              > Menu Config\n"
-        conthelp += "Key_Red         > Close XC\n"        
+        conthelp += "Menu               > Menu Config\n"
+        conthelp += "Key_Red          > Close XC\n"        
         conthelp += "Key_Green       > Add List to Bouqet\n"           
         conthelp += "Key_Yellow      > Remove List from Bouquet\n"
         conthelp += "Key_Blue         > Load M3u IpTV List Convert\n"
-        conthelp += "PVR              > Open Playlist/Record Folder\n"
-        conthelp += "REC              > Start Download Select Channel\n"  
-        conthelp += "Info              > Info XCplugin \n"         
-        conthelp += "Help             > This !!!\n\n" 
+        conthelp += "PVR                 > Open Playlist/Record Folder\n"
+        conthelp += "REC                 > Start Download Select Channel\n"  
+        conthelp += "Info                > Info XCplugin\n"         
+        conthelp += "Help                > This !!!\n\n" 
         conthelp += "--> CONFIG: \n"  
-        conthelp += "Put in a file /tmp/xc.txt and Import from Yellow Button\n"
-        conthelp += "host:port ( host without http:// )\n" 
-        conthelp += "user\n"         
-        conthelp += "password\n\n"
+        conthelp += " If you have a file /etc/enigma2/iptv.sh format:\n" 
+        conthelp += ' USERNAME="xxxxxxxxxx"\n'         
+        conthelp += ' PASSWORD="yyyyyyyyy"\n'
+        conthelp += ' url="http://server:port/xxxxyyyyyzzzzz"\n'
+        conthelp += " Import with Yellow Button this file iptv.sh\n"
         conthelp += "--> OPENSERVER:\n "  
         conthelp += "Put in a file /tmp/xc.txt and Import from Blue Button\n"
-        conthelp += "host:port ( host without http:// )\n" 
-        conthelp += "user\n"         
-        conthelp += "password\n\n"
-        conthelp += "*** Please report any bugs you find ***"   
+        conthelp += " host:port ( host without http:// )\n" 
+        conthelp += " user\n"         
+        conthelp += " password\n"
+        conthelp += "SELECT YOUR FILE .XML AND SAVE CONFIG"   
         return conthelp     
 
     def getinfocredits(self):
@@ -3209,7 +3364,7 @@ class OpenServer(Screen):
                 filesave = filesave.replace(':','_')
                 filesave = filesave.lower()
                 
-                pth= config.plugins.XCplugin.pthxmlfile.value + '/'
+                pth= config.plugins.XCplugin.pthxmlfile.value 
                 print 'pth:', pth                
                 f5 = open(pth + filesave, "w")                  
                 f5.write(str('<?xml version="1.0" encoding="UTF-8" ?>\n' + '<items>\n' + '<plugin_version>' + currversion + '</plugin_version>\n' +'<xtream_e2portal_url><![CDATA[http://'+ url + '/enigma2.php]]></xtream_e2portal_url>\n' + '<username>' + user + '</username>\n' + '<password>' + pswrd + '</password>\n'+ '</items>'))
@@ -3837,7 +3992,7 @@ class AutoStartTimer:
             # ReloadBouquet()
             
         else:
-            pthMovie = config.plugins.XCplugin.pthmovie.value + 'movie/'
+            pthMovie = config.plugins.XCplugin.pthmovie.value #+  'movie/'
             xc1 = STREAMS.playlistname
             tag='suls_iptv_'
             namebouquet = xc1
@@ -3863,7 +4018,7 @@ class AutoStartTimer:
             pth2 = pthMovie
             namebouquet = pth2 + '%s.m3u' % namebouquet.encode('utf-8')
             name = namebouquet.replace('.m3u', '').replace(pth2, '')
-            pth =  config.plugins.XCplugin.pthmovie.value + 'movie/' 
+            pth =  config.plugins.XCplugin.pthmovie.value #+  'movie/' 
             
             xcname = 'userbouquet.%s%s_.tv' % (tag, name)            
             self.iConsole = iConsole()
